@@ -16,7 +16,7 @@ struct BuildSummaryView: View {
                 if appViewModel.areAllStepsCompleted {
                     SummaryCard(isComplete: true, step: "All steps complete!")
                         .padding(.top)
-                        .padding(.bottom)
+
 
                     VStack {
                         Text("Summary of Build")

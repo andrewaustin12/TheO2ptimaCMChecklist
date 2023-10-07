@@ -35,7 +35,8 @@ class AppViewModel: ObservableObject {
             buildView2ViewModel.o2BailoutDilFilledChecked &&
             !buildView2ViewModel.o2Content.isEmpty &&
             !buildView2ViewModel.bailoutOneDilContent.isEmpty &&
-            !buildView2ViewModel.bailoutTwoContent.isEmpty &&
+//            (buildView2ViewModel.bailoutTwoContent.isEmpty || !buildView2ViewModel.bailoutTwoContent.isEmpty)  &&
+
 
         // MARK: BuildView3
             buildView3ViewModel.o2SensorsChecked &&
@@ -45,18 +46,16 @@ class AppViewModel: ObservableObject {
             buildView3ViewModel.isSetPointChanged &&
             !buildView3ViewModel.extVoltage.isEmpty &&
             !buildView3ViewModel.intVoltage.isEmpty &&
-            buildView3ViewModel.isSetPointTo19 &&
+
             
         // MARK: BuildView4
             buildView4ViewModel.isHudFunctioningChecked &&
             buildView4ViewModel.isCanisterHeadLidChecked &&
             buildView4ViewModel.isScrubberStatusChecked &&
             !buildView4ViewModel.eac.isEmpty &&
-            !buildView4ViewModel.sorb.isEmpty &&
-            !buildView4ViewModel.isUsedSorbMin.isEmpty &&
-            buildView4ViewModel.isNewSorb || buildView4ViewModel.isUsedSorb &&
-//            buildView4ViewModel.isUsedSorb &&
+            (buildView4ViewModel.isNewSorb || buildView4ViewModel.isUsedSorb) &&
             buildView4ViewModel.isScrubberPackedChecked &&
+
         
         // MARK: BuildView5
             buildView5ViewModel.isBorePlugChecked &&
@@ -96,74 +95,81 @@ class AppViewModel: ObservableObject {
     // Add a computed property to get incomplete steps
     var incompleteSteps: [Int] {
         var steps: [Int] = []
+        
         if !buildView2ViewModel.isUnitClenedBeforeDiveChecked {
             steps.append(1)
+            print("Step 1 incomplete")
         }
         if !buildView2ViewModel.o2BailoutDilFilledChecked {
             steps.append(2)
+            print("Step 2 incomplete")
         }
-        if buildView2ViewModel.o2Content.isEmpty {
+        if buildView2ViewModel.o2Content.isEmpty ||
+           buildView2ViewModel.bailoutOneDilContent.isEmpty ||
+           (!buildView2ViewModel.bailoutTwoContent.isEmpty && buildView2ViewModel.bailoutTwoContent.isEmpty) {
             steps.append(3)
-        }
-        if !buildView2ViewModel.bailoutOneDilContent.isEmpty{
-            steps.append(3)
-        }
-        if buildView2ViewModel.bailoutTwoContent.isEmpty {
-            steps.append(3)
+            print("Step 3 incomplete")
         }
         if !buildView3ViewModel.o2SensorsChecked {
             steps.append(4)
+            print("Step 4 incomplete")
         }
+        
         if buildView3ViewModel.cellOneAir.isEmpty {
             steps.append(4)
+            print("Step 4 incomplete")
         }
         if buildView3ViewModel.cellTwoAir.isEmpty {
             steps.append(4)
+            print("Step 4 incomplete")
         }
         if buildView3ViewModel.cellThreeAir.isEmpty {
             steps.append(4)
+            print("Step 4 incomplete")
         }
         if !buildView3ViewModel.isSetPointChanged {
             steps.append(5)
+            print("Step 5 incomplete")
         }
         if buildView3ViewModel.extVoltage.isEmpty {
             steps.append(5)
+            print("Step 5 incomplete")
         }
         if buildView3ViewModel.intVoltage.isEmpty {
             steps.append(5)
+            print("Step 5 incomplete")
         }
         if !buildView3ViewModel.isSetPointTo19 {
             steps.append(5)
+            print("Step 5 incomplete")
         }
         if !buildView4ViewModel.isHudFunctioningChecked {
             steps.append(6)
+            print("Step 6 incomplete")
         }
         if !buildView4ViewModel.isCanisterHeadLidChecked {
             steps.append(7)
+            print("Step 7 incomplete")
         }
         if !buildView4ViewModel.isScrubberStatusChecked {
             steps.append(8)
+            print("Step 8 incomplete")
         }
-        if buildView4ViewModel.eac.isEmpty{
+        if buildView4ViewModel.eac.isEmpty {
             steps.append(8)
+            print("Step 8 incomplete")
         }
-        if buildView4ViewModel.sorb.isEmpty {
-            steps.append(8)
+        if !(buildView4ViewModel.isNewSorb || buildView4ViewModel.isUsedSorb) {
+                steps.append(8)
+                print("Step 8 incomplete")
         }
-        if buildView4ViewModel.isUsedSorbMin.isEmpty {
-            steps.append(8)
-        }
-        if !buildView4ViewModel.isNewSorb && !buildView4ViewModel.isUsedSorb  {
-            steps.append(8)
-        }
-//        if !buildView4ViewModel.isUsedSorb {
-//            steps.append(8)
-//        }
         if !buildView4ViewModel.isScrubberPackedChecked {
             steps.append(9)
+            print("Step 9 incomplete")
         }
         if !buildView5ViewModel.isBorePlugChecked {
             steps.append(10)
+            print("Step  incomplete")
         }
         if !buildView5ViewModel.isLubedHeadInstalledChecked {
             steps.append(11)
@@ -240,7 +246,7 @@ class AppViewModel: ObservableObject {
         
         return steps
     }
-    
+
     var completedSteps: [Int] {
         var completed: [Int] = []
         for step in 1...30 {
