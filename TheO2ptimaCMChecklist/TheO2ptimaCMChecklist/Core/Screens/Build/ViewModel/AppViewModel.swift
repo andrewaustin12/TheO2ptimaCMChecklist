@@ -25,6 +25,8 @@ class AppViewModel: ObservableObject {
     // Build View 9 View Model
     @Published var buildView9ViewModel = BuildView9ViewModel()
     
+    
+    
     // Add a computed property to check if all steps are completed
     var areAllStepsCompleted: Bool {
         return
@@ -52,8 +54,8 @@ class AppViewModel: ObservableObject {
             !buildView4ViewModel.eac.isEmpty &&
             !buildView4ViewModel.sorb.isEmpty &&
             !buildView4ViewModel.isUsedSorbMin.isEmpty &&
-            buildView4ViewModel.isNewSorb &&
-            buildView4ViewModel.isUsedSorb &&
+            buildView4ViewModel.isNewSorb || buildView4ViewModel.isUsedSorb &&
+//            buildView4ViewModel.isUsedSorb &&
             buildView4ViewModel.isScrubberPackedChecked &&
         
         // MARK: BuildView5
@@ -151,12 +153,12 @@ class AppViewModel: ObservableObject {
         if buildView4ViewModel.isUsedSorbMin.isEmpty {
             steps.append(8)
         }
-        if !buildView4ViewModel.isNewSorb {
+        if !buildView4ViewModel.isNewSorb && !buildView4ViewModel.isUsedSorb  {
             steps.append(8)
         }
-        if !buildView4ViewModel.isUsedSorb {
-            steps.append(8)
-        }
+//        if !buildView4ViewModel.isUsedSorb {
+//            steps.append(8)
+//        }
         if !buildView4ViewModel.isScrubberPackedChecked {
             steps.append(9)
         }

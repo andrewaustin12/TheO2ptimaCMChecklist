@@ -25,7 +25,7 @@ struct BuildView8: View {
                     
                     Section {
                         Toggle("Turn on oxygen and record oxygen cylinder pressure:", isOn: $appViewModel.buildView8ViewModel.isOxygenTurnedOnRecordedChecked)
-                        OxygenPressureCard(appViewModel: AppViewModel())
+                        OxygenPressureCard(appViewModel: appViewModel)
                     } header: {
                         Text("Step 26")
                     }
@@ -65,8 +65,19 @@ struct BuildView8: View {
             NavigationLink("Next") {
                 BuildView9(appViewModel: appViewModel)
             }
-            .font(.title)
+            .buttonStyle(StandardButtonStyle())
             .bold()
+            .font(.title3)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        MainTabView()
+                    } label: {
+                        Image(systemName: "house")
+                    }
+                }
+                
+            }
         }
     }
 }

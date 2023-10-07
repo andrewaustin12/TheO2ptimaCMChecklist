@@ -82,8 +82,19 @@ struct BuildView7: View {
             NavigationLink("Next") {
                 BuildView8(appViewModel: appViewModel)
             }
-            .font(.title)
+            .buttonStyle(StandardButtonStyle())
             .bold()
+            .font(.title3)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        MainTabView()
+                    } label: {
+                        Image(systemName: "house")
+                    }
+                }
+                
+            }
         }
     }
 }

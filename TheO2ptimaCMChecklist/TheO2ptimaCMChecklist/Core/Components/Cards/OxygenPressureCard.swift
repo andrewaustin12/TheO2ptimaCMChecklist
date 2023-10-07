@@ -19,7 +19,8 @@ struct OxygenPressureCard: View {
                     Text("Pressure:")
                     Spacer()
                     TextField("Bar", text: $appViewModel.buildView8ViewModel.oxygenPressure)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.numbersAndPunctuation)
+                        .submitLabel(.done)
                         .frame(width: 80)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }

@@ -3,41 +3,35 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         VStack{
-            
-            
-            if #available(iOS 15.0, *) {
-                List {
+            List {
+                
+                Section {
+                    Image("app-logo")
+                        .resizable()
+                        .frame(width: 320, height: 300)
                     
-                    Section {
-                        Image("app-logo")
-                            .resizable()
-                            .frame(width: 320, height: 300)
-                        
-                    }
-                    
-                    Section("Developer") {
-                        HStack{
-                            Text("Made by: ")
-                            TwitterLink()
-                        }
-                        Text("Version 1.0")
-                        InstagramLink()
-                    }
-                    
-                    Section("Help") {
-                        RequestFeatures()
-                        GiveFeedback()
-                        
-                    }
                 }
-            } else {
-                List {
+                
+                Section("Developer") {
+                    HStack{
+                        Text("Made by: ")
+                        TwitterLink()
+                    }
+                    Text("Version 1.0")
+                    InstagramLink()
+                }
+                
+                Section("Help") {
+                    RequestFeatures()
+                    GiveFeedback()
                     
                 }
             }
         }
     }
 }
+
+
 
 #Preview {
     SettingsView()

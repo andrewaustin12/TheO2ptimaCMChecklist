@@ -9,6 +9,11 @@ import SwiftUI
 
 struct BuildView2: View {
     @ObservedObject var appViewModel: AppViewModel
+    @FocusState private var focusedTextField: FormTextField?
+    
+    enum FormTextField {
+        case o2Content, bailoutOneDilContent, bailoutTwoContent
+    }
     
     var body: some View {
         NavigationStack {
@@ -37,7 +42,10 @@ struct BuildView2: View {
                                 Text("Enter O2 %")
                                 Spacer()
                                 TextField("Mixture", text: $appViewModel.buildView2ViewModel.o2Content)
-                                    .keyboardType(.decimalPad)
+                                    .focused($focusedTextField, equals: .o2Content)
+                                    .onSubmit {focusedTextField = .bailoutOneDilContent}
+                                    .submitLabel(.next)
+                                    .keyboardType(.numberPad)
                                     .frame(width: 80)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                             }
@@ -45,7 +53,10 @@ struct BuildView2: View {
                                 Text("Enter Bailout/Diluent")
                                 Spacer()
                                 TextField("Mixture", text: $appViewModel.buildView2ViewModel.bailoutOneDilContent)
-                                    .keyboardType(.default)
+                                    .focused($focusedTextField, equals: .bailoutOneDilContent)
+                                    .onSubmit {focusedTextField = .bailoutTwoContent }
+                                    .submitLabel(.next)
+                                    .keyboardType(.numbersAndPunctuation)
                                     .frame(width: 80)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                             }
@@ -53,7 +64,10 @@ struct BuildView2: View {
                                 Text("Enter Bailout 2")
                                 Spacer()
                                 TextField("Mixture", text: $appViewModel.buildView2ViewModel.bailoutTwoContent)
-                                    .keyboardType(.decimalPad)
+                                    .focused($focusedTextField, equals: .bailoutTwoContent)
+                                    .onSubmit {focusedTextField = nil }
+                                    .submitLabel(.done)
+                                    .keyboardType(.numbersAndPunctuation)
                                     .frame(width: 80)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                             }
@@ -67,9 +81,22 @@ struct BuildView2: View {
             NavigationLink("Next") {
                 BuildView3(appViewModel: appViewModel)
             }
-            .buttonStyle(StandardButtonStyle())
             .bold()
             .font(.title3)
+            .buttonStyle(StandardButtonStyle())
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        MainTabView()
+                    } label: {
+                        Image(systemName: "house")
+                    }
+                }
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Dismiss") { focusedTextField = nil }
+                }
+            }
 
         }
     }

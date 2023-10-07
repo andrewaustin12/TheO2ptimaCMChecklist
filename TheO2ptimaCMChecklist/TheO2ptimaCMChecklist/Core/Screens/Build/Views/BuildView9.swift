@@ -34,8 +34,19 @@ struct BuildView9: View {
             NavigationLink("Next") {
                 BuildSummaryView(appViewModel: appViewModel)
             }
-            .font(.title)
+            .buttonStyle(StandardButtonStyle())
             .bold()
+            .font(.title3)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        MainTabView()
+                    } label: {
+                        Image(systemName: "house")
+                    }
+                }
+                
+            }
         }
     }
 }

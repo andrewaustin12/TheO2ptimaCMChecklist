@@ -10,6 +10,11 @@ import SwiftUI
 struct MillivoltReadingO2Card: View {
     
     @ObservedObject var appViewModel: AppViewModel
+    @FocusState private var focusedTextField: FormTextField?
+    
+    enum FormTextField {
+        case cellOneO2, cellTwoO2, cellThreeO2
+    }
     
     var body: some View {
         VStack {
@@ -22,7 +27,10 @@ struct MillivoltReadingO2Card: View {
                     Text("Cell 1")
                     
                     TextField("mV", text: $appViewModel.buildView5ViewModel.cellOneO2)
-                        .keyboardType(.decimalPad)
+                        .focused($focusedTextField, equals: .cellOneO2)
+                        .onSubmit {focusedTextField = .cellTwoO2}
+                        .submitLabel(.next)
+                        .keyboardType(.numbersAndPunctuation)
                         .frame(width: 80)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
@@ -31,7 +39,10 @@ struct MillivoltReadingO2Card: View {
                     Text("Cell 2")
                     
                     TextField("mV", text: $appViewModel.buildView5ViewModel.cellTwoO2)
-                        .keyboardType(.decimalPad)
+                        .focused($focusedTextField, equals: .cellTwoO2)
+                        .onSubmit {focusedTextField = .cellThreeO2}
+                        .submitLabel(.next)
+                        .keyboardType(.numbersAndPunctuation)
                         .frame(width: 80)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
@@ -40,7 +51,10 @@ struct MillivoltReadingO2Card: View {
                     Text("Cell 3")
                     
                     TextField("mV", text: $appViewModel.buildView5ViewModel.cellThreeO2)
-                        .keyboardType(.decimalPad)
+                        .focused($focusedTextField, equals: .cellThreeO2)
+                        .onSubmit {focusedTextField = nil}
+                        .submitLabel(.done)
+                        .keyboardType(.numbersAndPunctuation)
                         .frame(width: 80)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }

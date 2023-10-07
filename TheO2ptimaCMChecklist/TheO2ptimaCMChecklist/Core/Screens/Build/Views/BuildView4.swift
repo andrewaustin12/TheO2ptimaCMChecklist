@@ -31,7 +31,7 @@ struct BuildView4: View {
                     
                     Section {
                         Toggle("Is Scrubber", isOn: $appViewModel.buildView4ViewModel.isScrubberStatusChecked)
-                        ScrubberStatusCard(appViewModel: AppViewModel())
+                        ScrubberStatusCard(appViewModel: appViewModel)
                         
                     } header: {
                         Text("Step 8")
@@ -52,8 +52,19 @@ struct BuildView4: View {
             NavigationLink("Next") {
                 BuildView5(appViewModel: appViewModel)
             }
-            .font(.title)
+            .buttonStyle(StandardButtonStyle())
             .bold()
+            .font(.title3)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        MainTabView()
+                    } label: {
+                        Image(systemName: "house")
+                    }
+                }
+                
+            }
         }
     }
 }

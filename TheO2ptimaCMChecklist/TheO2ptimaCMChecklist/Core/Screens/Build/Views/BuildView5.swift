@@ -39,7 +39,7 @@ struct BuildView5: View {
                         Toggle("Check and record mV readings while filled with O2:", isOn: $appViewModel.buildView5ViewModel.isMvWithO2Checked)
                         Text("Note: \nReadings should be between 50 and 62 mV (for Analytical Industries Inc. sensors).")
                             .font(.caption)
-                        MillivoltReadingO2Card(appViewModel: AppViewModel())
+                        MillivoltReadingO2Card(appViewModel: appViewModel)
                     } header: {
                         Text("Step 15")
                     }
@@ -50,8 +50,19 @@ struct BuildView5: View {
             NavigationLink("Next") {
                 BuildView6(appViewModel: appViewModel)
             }
-            .font(.title)
+            .buttonStyle(StandardButtonStyle())
             .bold()
+            .font(.title3)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        MainTabView()
+                    } label: {
+                        Image(systemName: "house")
+                    }
+                }
+                
+            }
         }
     }
 }

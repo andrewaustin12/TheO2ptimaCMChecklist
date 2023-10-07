@@ -10,6 +10,11 @@ import SwiftUI
 struct VoltageCard: View {
     
     @ObservedObject var appViewModel: AppViewModel
+    @FocusState private var focusedTextField: FormTextField?
+    
+    enum FormTextField {
+        case  extVoltage, intVoltage
+    }
 
     var body: some View {
         VStack {
@@ -23,7 +28,10 @@ struct VoltageCard: View {
                     Text("Ext.")
 
                     TextField("V", text: $appViewModel.buildView3ViewModel.extVoltage)
-                        .keyboardType(.decimalPad)
+                        .focused($focusedTextField, equals: .extVoltage)
+                        .onSubmit {focusedTextField = .intVoltage}
+                        .submitLabel(.next)
+                        .keyboardType(.numbersAndPunctuation)
                         .frame(width: 80)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
@@ -35,7 +43,10 @@ struct VoltageCard: View {
                     Text("Int.")
                     
                     TextField("V", text: $appViewModel.buildView3ViewModel.intVoltage)
-                        .keyboardType(.decimalPad)
+                        .focused($focusedTextField, equals: .intVoltage)
+                        .onSubmit {focusedTextField = nil}
+                        .submitLabel(.done)
+                        .keyboardType(.numbersAndPunctuation)
                         .frame(width: 80)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     

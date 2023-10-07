@@ -39,6 +39,11 @@
 		3FA13A1D2AD024430059932A /* StandardButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A1C2AD024430059932A /* StandardButtonStyle.swift */; };
 		3FA13A212AD029B40059932A /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A202AD029B40059932A /* AppViewModel.swift */; };
 		3FA13A232AD05B2E0059932A /* SummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A222AD05B2E0059932A /* SummaryCard.swift */; };
+		3FA13A252AD077FF0059932A /* SummaryGasCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A242AD077FF0059932A /* SummaryGasCard.swift */; };
+		3FA13A272AD07B9F0059932A /* SummaryCellAirReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A262AD07B9F0059932A /* SummaryCellAirReading.swift */; };
+		3FA13A292AD07CB90059932A /* SummaryVoltageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A282AD07CB90059932A /* SummaryVoltageCard.swift */; };
+		3FA13A2B2AD07ECB0059932A /* SummaryScrubberCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A2A2AD07ECB0059932A /* SummaryScrubberCard.swift */; };
+		3FA13A2D2AD14B200059932A /* SummaryCellO2Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A2C2AD14B200059932A /* SummaryCellO2Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +80,11 @@
 		3FA13A1C2AD024430059932A /* StandardButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardButtonStyle.swift; sourceTree = "<group>"; };
 		3FA13A202AD029B40059932A /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		3FA13A222AD05B2E0059932A /* SummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCard.swift; sourceTree = "<group>"; };
+		3FA13A242AD077FF0059932A /* SummaryGasCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryGasCard.swift; sourceTree = "<group>"; };
+		3FA13A262AD07B9F0059932A /* SummaryCellAirReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCellAirReading.swift; sourceTree = "<group>"; };
+		3FA13A282AD07CB90059932A /* SummaryVoltageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryVoltageCard.swift; sourceTree = "<group>"; };
+		3FA13A2A2AD07ECB0059932A /* SummaryScrubberCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryScrubberCard.swift; sourceTree = "<group>"; };
+		3FA13A2C2AD14B200059932A /* SummaryCellO2Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCellO2Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +220,11 @@
 				3FA13A0A2AD006190059932A /* MillivoltReadingO2Card.swift */,
 				3FA13A152AD010B30059932A /* OxygenPressureCard.swift */,
 				3FA13A222AD05B2E0059932A /* SummaryCard.swift */,
+				3FA13A242AD077FF0059932A /* SummaryGasCard.swift */,
+				3FA13A262AD07B9F0059932A /* SummaryCellAirReading.swift */,
+				3FA13A282AD07CB90059932A /* SummaryVoltageCard.swift */,
+				3FA13A2A2AD07ECB0059932A /* SummaryScrubberCard.swift */,
+				3FA13A2C2AD14B200059932A /* SummaryCellO2Card.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -334,7 +349,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FA13A232AD05B2E0059932A /* SummaryCard.swift in Sources */,
+				3FA13A2D2AD14B200059932A /* SummaryCellO2Card.swift in Sources */,
 				3FA139F02ACED07D0059932A /* StartBuildView.swift in Sources */,
+				3FA13A252AD077FF0059932A /* SummaryGasCard.swift in Sources */,
 				3FA13A092AD0036D0059932A /* BuildView5.swift in Sources */,
 				3FA139FF2ACF3A6A0059932A /* BuildView3.swift in Sources */,
 				3FA139FA2ACF1D1A0059932A /* GasCard.swift in Sources */,
@@ -356,8 +373,11 @@
 				3FA139D32ACDFDB70059932A /* MainTabView.swift in Sources */,
 				3FA13A1A2AD014630059932A /* BuildSummaryView.swift in Sources */,
 				3FA13A0F2AD00A240059932A /* BuildView7.swift in Sources */,
+				3FA13A2B2AD07ECB0059932A /* SummaryScrubberCard.swift in Sources */,
+				3FA13A292AD07CB90059932A /* SummaryVoltageCard.swift in Sources */,
 				3FA13A182AD013790059932A /* BuildView9.swift in Sources */,
 				3FA139F42ACEDDBC0059932A /* BuildView2.swift in Sources */,
+				3FA13A272AD07B9F0059932A /* SummaryCellAirReading.swift in Sources */,
 				3FA139F72ACF1BB80059932A /* TitleHeaderView.swift in Sources */,
 				3FA139D12ACDFDB70059932A /* TheO2ptimaCMChecklistApp.swift in Sources */,
 				3FA139E62ACDFF7F0059932A /* WarningHeaderView.swift in Sources */,

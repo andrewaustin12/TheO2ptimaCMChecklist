@@ -10,7 +10,11 @@ import SwiftUI
 struct ScrubberStatusCard: View {
     
     @ObservedObject var appViewModel: AppViewModel
-
+    @FocusState private var focusedTextField: FormTextField?
+    
+    enum FormTextField {
+        case eac, sorb, isUsedSorbMin
+    }
     
     var body: some View {
         VStack {
@@ -23,7 +27,10 @@ struct ScrubberStatusCard: View {
                         Text("EAC")
                         
                         TextField("yes/no", text: $appViewModel.buildView4ViewModel.eac)
-                            .keyboardType(.decimalPad)
+                            .focused($focusedTextField, equals: .eac)
+                            .onSubmit {focusedTextField = .sorb}
+                            .submitLabel(.next)
+                            .keyboardType(.numbersAndPunctuation)
                             .frame(width: 80)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
@@ -32,7 +39,10 @@ struct ScrubberStatusCard: View {
                         Text("Sorb")
                         
                         TextField("type", text: $appViewModel.buildView4ViewModel.sorb)
-                            .keyboardType(.decimalPad)
+                            .focused($focusedTextField, equals: .sorb)
+                            .onSubmit {focusedTextField = .isUsedSorbMin}
+                            .submitLabel(.next)
+                            .keyboardType(.numbersAndPunctuation)
                             .frame(width: 80)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
@@ -40,7 +50,10 @@ struct ScrubberStatusCard: View {
                     VStack{
                         Text("Min Left")
                         TextField("Min", text: $appViewModel.buildView4ViewModel.isUsedSorbMin)
-                            .keyboardType(.decimalPad)
+                            .focused($focusedTextField, equals: .isUsedSorbMin)
+                            .onSubmit {focusedTextField = nil}
+                            .submitLabel(.done)
+                            .keyboardType(.numbersAndPunctuation)
                             .frame(width: 80)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
