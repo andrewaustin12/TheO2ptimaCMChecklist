@@ -15,7 +15,6 @@ struct StandardButtonStyle: ButtonStyle {
                 .frame(minWidth: 0,
                        maxWidth: 260)
                 .frame(height: 45)
-                .foregroundColor(.white)
                 .background( RoundedRectangle(cornerRadius: 5.0).fill(.unitPrimary).opacity(colorScheme == .dark ? 0.7 : 1.0)
                 
                 ).padding()

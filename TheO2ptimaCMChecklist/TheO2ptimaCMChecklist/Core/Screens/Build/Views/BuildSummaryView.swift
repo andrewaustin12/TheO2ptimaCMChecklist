@@ -75,6 +75,7 @@ struct BuildSummaryView: View {
             .bold()
             .buttonStyle(StandardButtonStyle())
             .disabled(!appViewModel.areAllStepsCompleted)
+            .foregroundColor(appViewModel.areAllStepsCompleted ? .white : .gray)
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     NavigationLink {
