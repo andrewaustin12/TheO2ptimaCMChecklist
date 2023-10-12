@@ -24,6 +24,7 @@ struct StartBuildView: View {
                 Text("Begin")
                     .font(.title3)
                     .bold()
+                    .foregroundStyle(.white)
             }.buttonStyle(StandardButtonStyle())
         }
     }

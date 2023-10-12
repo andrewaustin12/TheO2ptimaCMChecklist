@@ -37,6 +37,7 @@ struct BuildView9: View {
             .buttonStyle(StandardButtonStyle())
             .bold()
             .font(.title3)
+            .foregroundStyle(.white)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {

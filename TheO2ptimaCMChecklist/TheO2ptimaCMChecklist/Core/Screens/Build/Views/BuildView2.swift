@@ -39,7 +39,7 @@ struct BuildView2: View {
                             Text("Enter Gas content")
                                 .font(.title3)
                             HStack() {
-                                Text("Enter O2 %")
+                                Text("Enter O2")
                                 Spacer()
                                 TextField("Mixture", text: $appViewModel.buildView2ViewModel.o2Content)
                                     .focused($focusedTextField, equals: .o2Content)
@@ -83,6 +83,7 @@ struct BuildView2: View {
             }
             .bold()
             .font(.title3)
+            .foregroundStyle(.white)
             .buttonStyle(StandardButtonStyle())
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
