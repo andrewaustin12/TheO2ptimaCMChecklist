@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F03B99D2B6B9CE700E31152 /* BuyMeACoffeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03B99C2B6B9CE700E31152 /* BuyMeACoffeeView.swift */; };
+		3F03B9A02B6BA43C00E31152 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F03B99F2B6BA43C00E31152 /* StoreKit.framework */; };
+		3F03B9A32B6BA75F00E31152 /* TipStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03B9A22B6BA75F00E31152 /* TipStore.swift */; };
+		3F03B9A52B6BA76E00E31152 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03B9A42B6BA76E00E31152 /* TestView.swift */; };
+		3F03B9A72B6BA77700E31152 /* myTipProductIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03B9A62B6BA77700E31152 /* myTipProductIdentifiers.swift */; };
+		3F03B9A92B6BA78100E31152 /* TipsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03B9A82B6BA78100E31152 /* TipsButtonView.swift */; };
+		3F03B9AB2B6BA78900E31152 /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03B9AA2B6BA78900E31152 /* TipsView.swift */; };
+		3F03B9AD2B6BA79100E31152 /* TipsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03B9AC2B6BA79100E31152 /* TipsItemView.swift */; };
+		3F03B9AF2B6BA79700E31152 /* ThanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03B9AE2B6BA79700E31152 /* ThanksView.swift */; };
+		3F03B9B12B6BA7E000E31152 /* Coffee_Shop_Cup.scn in Resources */ = {isa = PBXBuildFile; fileRef = 3F03B9B02B6BA7E000E31152 /* Coffee_Shop_Cup.scn */; };
+		3F03B9B32B6BA7EA00E31152 /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03B9B22B6BA7EA00E31152 /* SceneView.swift */; };
 		3FA139D12ACDFDB70059932A /* TheO2ptimaCMChecklistApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA139D02ACDFDB70059932A /* TheO2ptimaCMChecklistApp.swift */; };
 		3FA139D32ACDFDB70059932A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA139D22ACDFDB70059932A /* MainTabView.swift */; };
 		3FA139D52ACDFDB80059932A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FA139D42ACDFDB80059932A /* Assets.xcassets */; };
@@ -47,6 +58,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F03B99C2B6B9CE700E31152 /* BuyMeACoffeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyMeACoffeeView.swift; sourceTree = "<group>"; };
+		3F03B99F2B6BA43C00E31152 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3F03B9A12B6BA51600E31152 /* TheO2ptimaCMChecklistStoreKitConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TheO2ptimaCMChecklistStoreKitConfiguration.storekit; sourceTree = "<group>"; };
+		3F03B9A22B6BA75F00E31152 /* TipStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipStore.swift; sourceTree = "<group>"; };
+		3F03B9A42B6BA76E00E31152 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		3F03B9A62B6BA77700E31152 /* myTipProductIdentifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myTipProductIdentifiers.swift; sourceTree = "<group>"; };
+		3F03B9A82B6BA78100E31152 /* TipsButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsButtonView.swift; sourceTree = "<group>"; };
+		3F03B9AA2B6BA78900E31152 /* TipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
+		3F03B9AC2B6BA79100E31152 /* TipsItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsItemView.swift; sourceTree = "<group>"; };
+		3F03B9AE2B6BA79700E31152 /* ThanksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThanksView.swift; sourceTree = "<group>"; };
+		3F03B9B02B6BA7E000E31152 /* Coffee_Shop_Cup.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Coffee_Shop_Cup.scn; sourceTree = "<group>"; };
+		3F03B9B22B6BA7EA00E31152 /* SceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
 		3FA139CD2ACDFDB70059932A /* TheO2ptimaCMChecklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheO2ptimaCMChecklist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA139D02ACDFDB70059932A /* TheO2ptimaCMChecklistApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheO2ptimaCMChecklistApp.swift; sourceTree = "<group>"; };
 		3FA139D22ACDFDB70059932A /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -92,17 +115,50 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F03B9A02B6BA43C00E31152 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F03B99A2B6B99A000E31152 /* History */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		3F03B99B2B6B9CCF00E31152 /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				3F03B9A42B6BA76E00E31152 /* TestView.swift */,
+				3F03B9B22B6BA7EA00E31152 /* SceneView.swift */,
+				3F03B9A62B6BA77700E31152 /* myTipProductIdentifiers.swift */,
+				3F03B99C2B6B9CE700E31152 /* BuyMeACoffeeView.swift */,
+				3F03B9A82B6BA78100E31152 /* TipsButtonView.swift */,
+				3F03B9A22B6BA75F00E31152 /* TipStore.swift */,
+				3F03B9AA2B6BA78900E31152 /* TipsView.swift */,
+				3F03B9AC2B6BA79100E31152 /* TipsItemView.swift */,
+				3F03B9AE2B6BA79700E31152 /* ThanksView.swift */,
+			);
+			path = Tips;
+			sourceTree = "<group>";
+		};
+		3F03B99E2B6BA43C00E31152 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F03B99F2B6BA43C00E31152 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3FA139C42ACDFDB70059932A = {
 			isa = PBXGroup;
 			children = (
 				3FA139CF2ACDFDB70059932A /* TheO2ptimaCMChecklist */,
 				3FA139CE2ACDFDB70059932A /* Products */,
+				3F03B99E2B6BA43C00E31152 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +173,7 @@
 		3FA139CF2ACDFDB70059932A /* TheO2ptimaCMChecklist */ = {
 			isa = PBXGroup;
 			children = (
+				3F03B9B02B6BA7E000E31152 /* Coffee_Shop_Cup.scn */,
 				3FA139DE2ACDFEAD0059932A /* SpashScreen */,
 				3FA139E12ACDFED10059932A /* WarningScreen */,
 				3FA139EB2ACEC71A0059932A /* Core */,
@@ -124,6 +181,7 @@
 				3FA139D22ACDFDB70059932A /* MainTabView.swift */,
 				3FA139D42ACDFDB80059932A /* Assets.xcassets */,
 				3FA139D62ACDFDB80059932A /* Preview Content */,
+				3F03B9A12B6BA51600E31152 /* TheO2ptimaCMChecklistStoreKitConfiguration.storekit */,
 			);
 			path = TheO2ptimaCMChecklist;
 			sourceTree = "<group>";
@@ -179,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				3FA139ED2ACED05B0059932A /* Build */,
+				3F03B99A2B6B99A000E31152 /* History */,
 				3FA139EE2ACED06C0059932A /* Settings */,
 			);
 			path = Screens;
@@ -196,6 +255,7 @@
 		3FA139EE2ACED06C0059932A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				3F03B99B2B6B9CCF00E31152 /* Tips */,
 				3FA139F12ACED09C0059932A /* SettingsView.swift */,
 			);
 			path = Settings;
@@ -336,6 +396,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F03B9B12B6BA7E000E31152 /* Coffee_Shop_Cup.scn in Resources */,
 				3FA139D82ACDFDB80059932A /* Preview Assets.xcassets in Resources */,
 				3FA139D52ACDFDB80059932A /* Assets.xcassets in Resources */,
 			);
@@ -358,28 +419,37 @@
 				3FA13A072ACFFCEF0059932A /* ScrubberStatusCard.swift in Sources */,
 				3FA13A122AD00BAF0059932A /* CountdownTimerView.swift in Sources */,
 				3FA13A142AD010380059932A /* BuildView8.swift in Sources */,
+				3F03B9AB2B6BA78900E31152 /* TipsView.swift in Sources */,
 				3FA139E02ACDFECB0059932A /* SplashView.swift in Sources */,
+				3F03B99D2B6B9CE700E31152 /* BuyMeACoffeeView.swift in Sources */,
 				3FA13A212AD029B40059932A /* AppViewModel.swift in Sources */,
 				3FA13A0D2AD007E80059932A /* BuildView6.swift in Sources */,
+				3F03B9B32B6BA7EA00E31152 /* SceneView.swift in Sources */,
 				3FA139E32ACDFEE60059932A /* WarningView.swift in Sources */,
 				3FA13A162AD010B30059932A /* OxygenPressureCard.swift in Sources */,
 				3FA13A012ACF3C790059932A /* MvReadingAmbientAirCard.swift in Sources */,
 				3FA139F22ACED09C0059932A /* SettingsView.swift in Sources */,
+				3F03B9A32B6BA75F00E31152 /* TipStore.swift in Sources */,
 				3FA139EA2ACE00760059932A /* SplashViewModifier.swift in Sources */,
 				3FA13A1D2AD024430059932A /* StandardButtonStyle.swift in Sources */,
 				3FA13A052ACF42CF0059932A /* BuildView4.swift in Sources */,
+				3F03B9A72B6BA77700E31152 /* myTipProductIdentifiers.swift in Sources */,
 				3FA13A032ACF40F70059932A /* VoltageCard.swift in Sources */,
 				3FA13A0B2AD006190059932A /* MillivoltReadingO2Card.swift in Sources */,
 				3FA139D32ACDFDB70059932A /* MainTabView.swift in Sources */,
+				3F03B9AD2B6BA79100E31152 /* TipsItemView.swift in Sources */,
 				3FA13A1A2AD014630059932A /* BuildSummaryView.swift in Sources */,
 				3FA13A0F2AD00A240059932A /* BuildView7.swift in Sources */,
 				3FA13A2B2AD07ECB0059932A /* SummaryScrubberCard.swift in Sources */,
 				3FA13A292AD07CB90059932A /* SummaryVoltageCard.swift in Sources */,
+				3F03B9A92B6BA78100E31152 /* TipsButtonView.swift in Sources */,
 				3FA13A182AD013790059932A /* BuildView9.swift in Sources */,
 				3FA139F42ACEDDBC0059932A /* BuildView2.swift in Sources */,
 				3FA13A272AD07B9F0059932A /* SummaryCellAirReading.swift in Sources */,
+				3F03B9AF2B6BA79700E31152 /* ThanksView.swift in Sources */,
 				3FA139F72ACF1BB80059932A /* TitleHeaderView.swift in Sources */,
 				3FA139D12ACDFDB70059932A /* TheO2ptimaCMChecklistApp.swift in Sources */,
+				3F03B9A52B6BA76E00E31152 /* TestView.swift in Sources */,
 				3FA139E62ACDFF7F0059932A /* WarningHeaderView.swift in Sources */,
 				3FA139FD2ACF39E70059932A /* ProgressBarView.swift in Sources */,
 				3FA139E82ACDFFC60059932A /* RoundedShape.swift in Sources */,
@@ -530,7 +600,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andy.TheO2ptimaCMChecklist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -561,7 +631,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andy.TheO2ptimaCMChecklist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
