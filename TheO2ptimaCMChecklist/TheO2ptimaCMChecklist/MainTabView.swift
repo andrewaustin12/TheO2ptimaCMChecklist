@@ -14,15 +14,30 @@ struct MainTabView: View {
                     Image(systemName: "water.waves")
                     Text("Build")
                 }.tag(0)
-            
-            SettingsView()
+            GearListView()
                 .onAppear{
                     selectedIndex = 1
                 }
                 .tabItem{
+                    Image(systemName: "list.dash")
+                    Text("Gear")
+                }.tag(1)
+            BuildLogsView()
+                .onAppear{
+                    selectedIndex = 2
+                }
+                .tabItem{
+                    Image(systemName: "list.bullet.clipboard")
+                    Text("History")
+                }.tag(2)
+            SettingsView()
+                .onAppear{
+                    selectedIndex = 3
+                }
+                .tabItem{
                     Image(systemName: "gear")
                     Text("Settings")
-                }.tag(1)
+                }.tag(3)
         }
         .navigationBarBackButtonHidden(true)
     }

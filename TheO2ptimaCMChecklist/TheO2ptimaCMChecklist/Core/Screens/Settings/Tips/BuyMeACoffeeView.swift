@@ -67,10 +67,7 @@ struct BuyMeACoffeeView: View {
                         .multilineTextAlignment(.center)
                         .padding(2)
                     }
-
-
-
-
+                    .padding(.bottom)
 
                     // Purchase button
                     Button(action: {
@@ -85,6 +82,7 @@ struct BuyMeACoffeeView: View {
                             .cornerRadius(10)
                             .shadow(radius: 10)
                     }
+                    
                 }
                 .padding()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

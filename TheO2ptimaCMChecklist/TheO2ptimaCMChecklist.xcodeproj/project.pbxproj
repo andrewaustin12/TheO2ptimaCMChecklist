@@ -55,6 +55,11 @@
 		3FA13A292AD07CB90059932A /* SummaryVoltageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A282AD07CB90059932A /* SummaryVoltageCard.swift */; };
 		3FA13A2B2AD07ECB0059932A /* SummaryScrubberCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A2A2AD07ECB0059932A /* SummaryScrubberCard.swift */; };
 		3FA13A2D2AD14B200059932A /* SummaryCellO2Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A2C2AD14B200059932A /* SummaryCellO2Card.swift */; };
+		3FAE0A9C2B6BB2B000FB0110 /* GearListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0A9B2B6BB2B000FB0110 /* GearListView.swift */; };
+		3FAE0AA12B6BB2E400FB0110 /* BuildLogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AA02B6BB2E400FB0110 /* BuildLogsView.swift */; };
+		3FAE0AA32B6BB5E600FB0110 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AA22B6BB5E600FB0110 /* DetailView.swift */; };
+		3FAE0AA52B6BB5F100FB0110 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AA42B6BB5F100FB0110 /* ToDo.swift */; };
+		3FAE0AA92B6BB70400FB0110 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AA82B6BB70400FB0110 /* NotificationHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +113,11 @@
 		3FA13A282AD07CB90059932A /* SummaryVoltageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryVoltageCard.swift; sourceTree = "<group>"; };
 		3FA13A2A2AD07ECB0059932A /* SummaryScrubberCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryScrubberCard.swift; sourceTree = "<group>"; };
 		3FA13A2C2AD14B200059932A /* SummaryCellO2Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCellO2Card.swift; sourceTree = "<group>"; };
+		3FAE0A9B2B6BB2B000FB0110 /* GearListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GearListView.swift; path = ../../../../../../../../Documents/GearListView.swift; sourceTree = "<group>"; };
+		3FAE0AA02B6BB2E400FB0110 /* BuildLogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BuildLogsView.swift; path = ../../../../../../../BuildLogsView.swift; sourceTree = "<group>"; };
+		3FAE0AA22B6BB5E600FB0110 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		3FAE0AA42B6BB5F100FB0110 /* ToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		3FAE0AA82B6BB70400FB0110 /* NotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,13 +132,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F03B99A2B6B99A000E31152 /* History */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = History;
-			sourceTree = "<group>";
-		};
 		3F03B99B2B6B9CCF00E31152 /* Tips */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +176,7 @@
 		3FA139CF2ACDFDB70059932A /* TheO2ptimaCMChecklist */ = {
 			isa = PBXGroup;
 			children = (
+				3FAE0AA62B6BB6F000FB0110 /* Utils */,
 				3F03B9B02B6BA7E000E31152 /* Coffee_Shop_Cup.scn */,
 				3FA139DE2ACDFEAD0059932A /* SpashScreen */,
 				3FA139E12ACDFED10059932A /* WarningScreen */,
@@ -227,6 +231,7 @@
 		3FA139EB2ACEC71A0059932A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				3FAE0AAA2B6BB73800FB0110 /* Models */,
 				3FA139E42ACDFEF10059932A /* Components */,
 				3FA139EC2ACEC7250059932A /* Screens */,
 			);
@@ -237,7 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				3FA139ED2ACED05B0059932A /* Build */,
-				3F03B99A2B6B99A000E31152 /* History */,
+				3FAE0A9A2B6BB29A00FB0110 /* Gear */,
+				3FAE0A9F2B6BB2DA00FB0110 /* History */,
 				3FA139EE2ACED06C0059932A /* Settings */,
 			);
 			path = Screens;
@@ -338,6 +344,47 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		3FAE0A9A2B6BB29A00FB0110 /* Gear */ = {
+			isa = PBXGroup;
+			children = (
+				3FAE0A9B2B6BB2B000FB0110 /* GearListView.swift */,
+				3FAE0AA22B6BB5E600FB0110 /* DetailView.swift */,
+				3FAE0AA42B6BB5F100FB0110 /* ToDo.swift */,
+			);
+			path = Gear;
+			sourceTree = "<group>";
+		};
+		3FAE0A9F2B6BB2DA00FB0110 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				3FAE0AA02B6BB2E400FB0110 /* BuildLogsView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		3FAE0AA62B6BB6F000FB0110 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3FAE0AA72B6BB6F500FB0110 /* Handlers */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3FAE0AA72B6BB6F500FB0110 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				3FAE0AA82B6BB70400FB0110 /* NotificationHandler.swift */,
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
+		3FAE0AAA2B6BB73800FB0110 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -413,6 +460,7 @@
 				3FA13A2D2AD14B200059932A /* SummaryCellO2Card.swift in Sources */,
 				3FA139F02ACED07D0059932A /* StartBuildView.swift in Sources */,
 				3FA13A252AD077FF0059932A /* SummaryGasCard.swift in Sources */,
+				3FAE0AA12B6BB2E400FB0110 /* BuildLogsView.swift in Sources */,
 				3FA13A092AD0036D0059932A /* BuildView5.swift in Sources */,
 				3FA139FF2ACF3A6A0059932A /* BuildView3.swift in Sources */,
 				3FA139FA2ACF1D1A0059932A /* GasCard.swift in Sources */,
@@ -435,7 +483,10 @@
 				3FA13A052ACF42CF0059932A /* BuildView4.swift in Sources */,
 				3F03B9A72B6BA77700E31152 /* myTipProductIdentifiers.swift in Sources */,
 				3FA13A032ACF40F70059932A /* VoltageCard.swift in Sources */,
+				3FAE0AA52B6BB5F100FB0110 /* ToDo.swift in Sources */,
 				3FA13A0B2AD006190059932A /* MillivoltReadingO2Card.swift in Sources */,
+				3FAE0AA32B6BB5E600FB0110 /* DetailView.swift in Sources */,
+				3FAE0AA92B6BB70400FB0110 /* NotificationHandler.swift in Sources */,
 				3FA139D32ACDFDB70059932A /* MainTabView.swift in Sources */,
 				3F03B9AD2B6BA79100E31152 /* TipsItemView.swift in Sources */,
 				3FA13A1A2AD014630059932A /* BuildSummaryView.swift in Sources */,
@@ -448,6 +499,7 @@
 				3FA13A272AD07B9F0059932A /* SummaryCellAirReading.swift in Sources */,
 				3F03B9AF2B6BA79700E31152 /* ThanksView.swift in Sources */,
 				3FA139F72ACF1BB80059932A /* TitleHeaderView.swift in Sources */,
+				3FAE0A9C2B6BB2B000FB0110 /* GearListView.swift in Sources */,
 				3FA139D12ACDFDB70059932A /* TheO2ptimaCMChecklistApp.swift in Sources */,
 				3F03B9A52B6BA76E00E31152 /* TestView.swift in Sources */,
 				3FA139E62ACDFF7F0059932A /* WarningHeaderView.swift in Sources */,

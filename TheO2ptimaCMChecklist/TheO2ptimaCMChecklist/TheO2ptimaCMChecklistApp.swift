@@ -11,13 +11,42 @@ import SwiftData
 
 @main
 struct TheO2ptimaCMChecklistApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    let container: ModelContainer
     
     @StateObject private var store = TipStore()
     
     var body: some Scene {
         WindowGroup {
             WarningView()
+                .modelContainer(container)
                 .environmentObject(store)
         }
+    }
+    init() {
+        let schema = Schema([ToDo.self])
+        let config = ModelConfiguration("O2ptimaCMChecklist", schema: schema)
+        do {
+            container = try ModelContainer(for: schema, configurations: config)
+        } catch {
+            fatalError("Could not configure the container")
+        }
+        print(URL.applicationSupportDirectory.path(percentEncoded: false))
+        
+//        Purchases.logLevel = .debug
+//        Purchases.configure(withAPIKey: Secrets.apiKey)
+    }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UNUserNotificationCenter.current().delegate = self
+        return true
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // Handle the notification when the app is in the foreground.
+        // You can customize the presentation options here.
+        completionHandler([.banner, .sound])
     }
 }
