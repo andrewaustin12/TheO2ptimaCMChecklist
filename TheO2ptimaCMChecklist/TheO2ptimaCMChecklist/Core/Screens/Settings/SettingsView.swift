@@ -16,7 +16,7 @@ struct SettingsView: View {
                 Section("Developer") {
                     HStack{
                         Label("Made by:", systemImage: "person")
-                        NavigationLink("Andrew") {
+                        NavigationLink("Andy") {
                             MyBioView()
                         }
                     }

@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BuildView3: View {
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
     
-    @ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModel
     
     var body: some View {
         NavigationStack{
@@ -21,18 +24,18 @@ struct BuildView3: View {
                 
                 Form {
                     Section {
-                        Toggle("Turn on handset and check O2 sensor display in ambient air.", isOn: $appViewModel.buildView3ViewModel.o2SensorsChecked)
+                        Toggle("Turn on handset and check O2 sensor display in ambient air.", isOn: $build.o2SensorsChecked)
                         Text("Note: \nReadings should be between 10 and 14 mV \n(for Analytical Industries Inc. sensors).")
                             .font(.caption)
-                        MvReadingAmbientAirCard(appViewModel: appViewModel)
+                        MvReadingAmbientAirCard(build: build)
                     } header: {
                         Text("Step 4")
                     }
                     
                     Section {
-                        Toggle("Change to low setpoint to fire O2 solenoid.", isOn: $appViewModel.buildView3ViewModel.isSetPointChanged)
-                        VoltageCard(appViewModel: appViewModel )
-                        Toggle("Change setpoint back to .19", isOn: $appViewModel.buildView3ViewModel.isSetPointTo19)
+                        Toggle("Change to low setpoint to fire O2 solenoid.", isOn: $build.isSetPointChanged)
+                        VoltageCard(build: build)
+                        Toggle("Change setpoint back to .19", isOn: $build.isSetPointTo19)
                     } header: {
                         Text("Step 5")
                     }
@@ -41,7 +44,7 @@ struct BuildView3: View {
                 }
             }
             NavigationLink("Next") {
-                BuildView4(appViewModel: appViewModel)
+                BuildView4(build: build)
             }
             .buttonStyle(StandardButtonStyle())
             .bold()
@@ -62,6 +65,8 @@ struct BuildView3: View {
 }
 
 #Preview {
- 
-    BuildView3(appViewModel: AppViewModel())
+    NavigationStack {
+        BuildView3(build: Build())
+            .modelContainer(for: Build.self)
+    }
 }

@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct MvReadingAmbientAirCard: View {
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
     
-    @ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModel
     @FocusState private var focusedTextField: FormTextField?
     
     enum FormTextField {
@@ -27,7 +29,7 @@ struct MvReadingAmbientAirCard: View {
                 VStack {
                     Text("Cell 1")
                     
-                    TextField("mV", text: $appViewModel.buildView3ViewModel.cellOneAir)
+                    TextField("mV", text: $build.cellOneAir)
                         .focused($focusedTextField, equals: .cellOneAir)
                         .onSubmit {focusedTextField = .cellTwoAir}
                         .submitLabel(.next)
@@ -39,7 +41,7 @@ struct MvReadingAmbientAirCard: View {
                 VStack {
                     Text("Cell 2")
                     
-                    TextField("mV", text: $appViewModel.buildView3ViewModel.cellTwoAir)
+                    TextField("mV", text: $build.cellTwoAir)
                         .focused($focusedTextField, equals: .cellTwoAir)
                         .onSubmit {focusedTextField = .cellThreeAir}
                         .submitLabel(.next)
@@ -51,7 +53,7 @@ struct MvReadingAmbientAirCard: View {
                 VStack {
                     Text("Cell 3")
                     
-                    TextField("mV", text: $appViewModel.buildView3ViewModel.cellThreeAir)
+                    TextField("mV", text: $build.cellThreeAir)
                         .focused($focusedTextField, equals: .cellThreeAir)
                         .onSubmit {focusedTextField = nil}
                         .submitLabel(.done)
@@ -69,5 +71,8 @@ struct MvReadingAmbientAirCard: View {
 
 
 #Preview {
-    MvReadingAmbientAirCard(appViewModel: AppViewModel())
+    NavigationStack {
+        MvReadingAmbientAirCard(build: Build())
+            .modelContainer(for: Build.self)
+    }
 }

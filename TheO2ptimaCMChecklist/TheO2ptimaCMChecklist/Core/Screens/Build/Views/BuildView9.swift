@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct BuildView9: View {
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
     
-    @ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModel
     
     @State var showSheet: Bool = false
     
@@ -24,15 +26,15 @@ struct BuildView9: View {
                 Form {
                     
                     Section {
-                        Toggle("Confirm correct onboard & bailout gases are configured and selected in computers and that they are set to CC mode.", isOn: $appViewModel.buildView9ViewModel.isGasesComputerConfiguredChecked)
-                        Toggle("Check bailout regulator hoses, mouthpieces, and hose fitting tightness. Install bailout regulators.", isOn: $appViewModel.buildView9ViewModel.isRegulatorsHosesInstalledTight)
+                        Toggle("Confirm correct onboard & bailout gases are configured and selected in computers and that they are set to CC mode.", isOn: $build.isGasesComputerConfiguredChecked)
+                        Toggle("Check bailout regulator hoses, mouthpieces, and hose fitting tightness. Install bailout regulators.", isOn: $build.isRegulatorsHosesInstalledTight)
                     } header: {
                         Text("Step 29 - 30")
                     }
                 }
             }
             NavigationLink("Next") {
-                BuildSummaryView(appViewModel: appViewModel)
+                BuildSummaryView(build: build)
             }
             .buttonStyle(StandardButtonStyle())
             .bold()
@@ -53,5 +55,8 @@ struct BuildView9: View {
 }
 
 #Preview {
-    BuildView9(appViewModel: AppViewModel())
+    NavigationStack {
+        BuildView9(build: Build())
+            .modelContainer(for: Build.self)
+    }
 }

@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct BuildView5: View {
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
     
-    @ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModel
     
     var body: some View {
         NavigationStack{
@@ -21,25 +23,25 @@ struct BuildView5: View {
                 
                 Form {
                     Section {
-                        Toggle("Inspect bore plug and confirm that it is installed in correct orientation. ", isOn: $appViewModel.buildView5ViewModel.isBorePlugChecked)
+                        Toggle("Inspect bore plug and confirm that it is installed in correct orientation. ", isOn: $build.isBorePlugChecked)
                         
-                        Toggle("Lube head O-rings and flat seal as necessary. Confirm O-ring is in place on premix tube and install head onto canister. ", isOn: $appViewModel.buildView5ViewModel.isLubedHeadInstalledChecked)
+                        Toggle("Lube head O-rings and flat seal as necessary. Confirm O-ring is in place on premix tube and install head onto canister. ", isOn: $build.isLubedHeadInstalledChecked)
                         
-                        Toggle("Confirm water trap is installed in lid. Lube lid O-rings and flat seal as necessary. Install lid onto canister.", isOn: $appViewModel.buildView5ViewModel.isWaterTrapInstalledChecked)
+                        Toggle("Confirm water trap is installed in lid. Lube lid O-rings and flat seal as necessary. Install lid onto canister.", isOn: $build.isWaterTrapInstalledChecked)
                         
-                        Toggle("Install calibration caps, connect O2 hose, turn on controller, and flush with oxygen until PP02 readings stabilize.", isOn: $appViewModel.buildView5ViewModel.isO2FlushedChecked)
+                        Toggle("Install calibration caps, connect O2 hose, turn on controller, and flush with oxygen until PP02 readings stabilize.", isOn: $build.isO2FlushedChecked)
                         
-                        Toggle("Calibrate controller and HUD.", isOn: $appViewModel.buildView5ViewModel.isControllerCalibratedChecked)
+                        Toggle("Calibrate controller and HUD.", isOn: $build.isControllerCalibratedChecked)
 
                     } header: {
                         Text("Step 10 - 14")
                     }
                     
                     Section {
-                        Toggle("Check and record mV readings while filled with O2:", isOn: $appViewModel.buildView5ViewModel.isMvWithO2Checked)
+                        Toggle("Check and record mV readings while filled with O2:", isOn: $build.isMvWithO2Checked)
                         Text("Note: \nReadings should be between 50 and 62 mV (for Analytical Industries Inc. sensors).")
                             .font(.caption)
-                        MillivoltReadingO2Card(appViewModel: appViewModel)
+                        MillivoltReadingO2Card(build: build)
                     } header: {
                         Text("Step 15")
                     }
@@ -48,7 +50,7 @@ struct BuildView5: View {
                 }
             }
             NavigationLink("Next") {
-                BuildView6(appViewModel: appViewModel)
+                BuildView6(build: build)
             }
             .buttonStyle(StandardButtonStyle())
             .bold()
@@ -70,5 +72,8 @@ struct BuildView5: View {
 
 
 #Preview {
-    BuildView5(appViewModel: AppViewModel())
+    NavigationStack {
+        BuildView5(build: Build())
+            .modelContainer(for: Build.self)
+    }
 }

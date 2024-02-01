@@ -21,7 +21,7 @@ struct MyBioView: View {
                         .padding()
 
                     // Developer's bio
-                    Text("Andrew")
+                    Text("Andy")
                         .font(.title)
                         .padding([.leading, .bottom, .trailing])
 

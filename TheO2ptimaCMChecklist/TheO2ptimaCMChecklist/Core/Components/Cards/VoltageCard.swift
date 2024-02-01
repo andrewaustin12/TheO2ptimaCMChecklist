@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct VoltageCard: View {
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
     
-    @ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModel
     @FocusState private var focusedTextField: FormTextField?
     
     enum FormTextField {
@@ -27,7 +29,7 @@ struct VoltageCard: View {
                 VStack {
                     Text("Ext.")
 
-                    TextField("V", text: $appViewModel.buildView3ViewModel.extVoltage)
+                    TextField("V", text: $build.extVoltage)
                         .focused($focusedTextField, equals: .extVoltage)
                         .onSubmit {focusedTextField = .intVoltage}
                         .submitLabel(.next)
@@ -42,7 +44,7 @@ struct VoltageCard: View {
                 VStack {
                     Text("Int.")
                     
-                    TextField("V", text: $appViewModel.buildView3ViewModel.intVoltage)
+                    TextField("V", text: $build.intVoltage)
                         .focused($focusedTextField, equals: .intVoltage)
                         .onSubmit {focusedTextField = nil}
                         .submitLabel(.done)
@@ -60,5 +62,7 @@ struct VoltageCard: View {
     }
 }
 #Preview {
-    VoltageCard(appViewModel: AppViewModel())
+    
+    VoltageCard(build: Build())
+        .modelContainer(for: Build.self)
 }

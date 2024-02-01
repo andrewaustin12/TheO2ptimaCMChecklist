@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ScrubberStatusCard: View {
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
+    @State private var stacktime: Bool = false
     
-    @ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModel
     @FocusState private var focusedTextField: FormTextField?
     
     enum FormTextField {
@@ -26,7 +29,7 @@ struct ScrubberStatusCard: View {
                     VStack {
                         Text("EAC")
                         
-                        TextField("yes/no", text: $appViewModel.buildView4ViewModel.eac)
+                        TextField("yes/no", text: $build.eac)
                             .focused($focusedTextField, equals: .eac)
                             .onSubmit {focusedTextField = .sorb}
                             .submitLabel(.next)
@@ -38,7 +41,7 @@ struct ScrubberStatusCard: View {
                     VStack {
                         Text("Sorb")
                         
-                        TextField("type", text: $appViewModel.buildView4ViewModel.sorb)
+                        TextField("type", text: $build.sorb)
                             .focused($focusedTextField, equals: .sorb)
                             .onSubmit {focusedTextField = .isUsedSorbMin}
                             .submitLabel(.next)
@@ -49,7 +52,7 @@ struct ScrubberStatusCard: View {
                     Spacer()
                     VStack{
                         Text("Min Left")
-                        TextField("Min", text: $appViewModel.buildView4ViewModel.isUsedSorbMin)
+                        TextField("Min", text: $build.isUsedSorbMin)
                             .focused($focusedTextField, equals: .isUsedSorbMin)
                             .onSubmit {focusedTextField = nil}
                             .submitLabel(.done)
@@ -63,8 +66,9 @@ struct ScrubberStatusCard: View {
                     Spacer()
                     VStack {
                         
-                        Toggle("New", isOn: $appViewModel.buildView4ViewModel.isNewSorb)
-                        Toggle("Used", isOn: $appViewModel.buildView4ViewModel.isUsedSorb)
+                        Toggle("New", isOn: $build.isNewSorb)
+                        Toggle("Used", isOn: $build.isUsedSorb)
+                        Toggle("Rest Stack Timer", isOn: $stacktime)
                     }
                     Spacer()
                 }
@@ -76,5 +80,5 @@ struct ScrubberStatusCard: View {
 }
 
 #Preview {
-    ScrubberStatusCard(appViewModel: AppViewModel())
+    ScrubberStatusCard(build: Build())
 }

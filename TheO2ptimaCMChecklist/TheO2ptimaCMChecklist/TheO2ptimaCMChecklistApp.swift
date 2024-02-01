@@ -24,7 +24,7 @@ struct TheO2ptimaCMChecklistApp: App {
         }
     }
     init() {
-        let schema = Schema([ToDo.self])
+        let schema = Schema([Build.self, ToDo.self])
         let config = ModelConfiguration("O2ptimaCMChecklist", schema: schema)
         do {
             container = try ModelContainer(for: schema, configurations: config)

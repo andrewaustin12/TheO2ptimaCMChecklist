@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct BuildView6: View {
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
     
-    @ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModel
     
     var body: some View {
         NavigationStack{
@@ -22,22 +24,22 @@ struct BuildView6: View {
                 Form {
                     
                     Section {
-                        Toggle("Install both water trap tubes into counterlungs.", isOn: $appViewModel.buildView6ViewModel.isWaterTrapInstalledOnCounterlungsChecked)
+                        Toggle("Install both water trap tubes into counterlungs.", isOn: $build.isWaterTrapInstalledOnCounterlungsChecked)
                         Text("Note: \nThe black machined tube is for the exhale side.")
                             .font(.caption)
                     } header: {
                         Text("Step 16")
                     }
                     Section {
-                        Toggle("Set the assembled scrubber canister into place and install onto counterlungs. ", isOn: $appViewModel.buildView6ViewModel.isCanisterInstalledOntoCounterLungs)
+                        Toggle("Set the assembled scrubber canister into place and install onto counterlungs. ", isOn: $build.isCanisterInstalledOntoCounterLungs)
                         
-                        Toggle("Inspect DSV, mushroom valves, mouthpiece, loop hoses, fittings, and O-rings. ", isOn: $appViewModel.buildView6ViewModel.isUnitPiecesInspectedChecked)
+                        Toggle("Inspect DSV, mushroom valves, mouthpiece, loop hoses, fittings, and O-rings. ", isOn: $build.isUnitPiecesInspectedChecked)
                         
-                        Toggle("Connect DSV to loop hoses and perform stereo check to confirm flow direction.", isOn: $appViewModel.buildView6ViewModel.isLoopConnectedTestedDirectionChecked)
+                        Toggle("Connect DSV to loop hoses and perform stereo check to confirm flow direction.", isOn: $build.isLoopConnectedTestedDirectionChecked)
                         
-                        Toggle("Connect loop hoses to counterlungs. Double check all loop fittings for tightness. ", isOn: $appViewModel.buildView6ViewModel.isLoopHosesConnectedCounterlungsChecked)
+                        Toggle("Connect loop hoses to counterlungs. Double check all loop fittings for tightness. ", isOn: $build.isLoopHosesConnectedCounterlungsChecked)
                         
-                        Toggle("Route controller and HUD cables. Plug into electronics canisters and stow excess in counterlung pockets. ", isOn: $appViewModel.buildView6ViewModel.isCablesStowedChecked)
+                        Toggle("Route controller and HUD cables. Plug into electronics canisters and stow excess in counterlung pockets. ", isOn: $build.isCablesStowedChecked)
 
                     } header: {
                         Text("Step 17 - 21")
@@ -49,7 +51,7 @@ struct BuildView6: View {
                 }
             }
             NavigationLink("Next") {
-                BuildView7(appViewModel: appViewModel)
+                BuildView7(build: build)
             }
             .buttonStyle(StandardButtonStyle())
             .bold()
@@ -70,5 +72,8 @@ struct BuildView6: View {
 }
 
 #Preview {
-    BuildView6(appViewModel: AppViewModel())
+    NavigationStack {
+        BuildView6(build: Build())
+            .modelContainer(for: Build.self)
+    }
 }

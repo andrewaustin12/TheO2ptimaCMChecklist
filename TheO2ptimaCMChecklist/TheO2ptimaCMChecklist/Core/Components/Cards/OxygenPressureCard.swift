@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct OxygenPressureCard: View {
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
     
-    @ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModel
 
     
     var body: some View {
@@ -18,7 +20,7 @@ struct OxygenPressureCard: View {
                 HStack {
                     Text("Pressure:")
                     Spacer()
-                    TextField("Bar", text: $appViewModel.buildView8ViewModel.oxygenPressure)
+                    TextField("Bar", text: $build.oxygenPressure)
                         .keyboardType(.numbersAndPunctuation)
                         .submitLabel(.done)
                         .frame(width: 80)
@@ -29,5 +31,6 @@ struct OxygenPressureCard: View {
     }
 }
 #Preview {
-    OxygenPressureCard(appViewModel: AppViewModel())
+    OxygenPressureCard(build: Build())
+        .modelContainer(for: Build.self)
 }

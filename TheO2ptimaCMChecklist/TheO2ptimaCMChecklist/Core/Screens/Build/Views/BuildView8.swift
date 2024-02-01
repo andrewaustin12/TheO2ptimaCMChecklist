@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct BuildView8: View {
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
     
-    @ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModel
     
     @State var showSheet: Bool = false
     
@@ -24,21 +26,21 @@ struct BuildView8: View {
                 Form {
                     
                     Section {
-                        Toggle("Turn on oxygen and record oxygen cylinder pressure:", isOn: $appViewModel.buildView8ViewModel.isOxygenTurnedOnRecordedChecked)
-                        OxygenPressureCard(appViewModel: appViewModel)
+                        Toggle("Turn on oxygen and record oxygen cylinder pressure:", isOn: $build.isOxygenTurnedOnRecordedChecked)
+                        OxygenPressureCard(build: build)
                     } header: {
                         Text("Step 26")
                     }
                     
                     Section {
-                        Toggle("Turn off oxygen cylinder and perform a leak down check. ", isOn: $appViewModel.buildView8ViewModel.isLeakDownChecked)
+                        Toggle("Turn off oxygen cylinder and perform a leak down check. ", isOn: $build.isLeakDownChecked)
                         
                     } header: {
                         Text("Steps 27")
                     }
                     
                     Section {
-                        Toggle("Preform PreBreathe", isOn: $appViewModel.buildView8ViewModel.isPrebreatheDoneChecked)
+                        Toggle("Preform PreBreathe", isOn: $build.isPrebreatheDoneChecked)
                         Text("Turn oxygen cylinder back on")
                         Text("open counterlung exhaust valve")
                         Text("change setpoint to 0.5")
@@ -63,7 +65,7 @@ struct BuildView8: View {
                 }
             }
             NavigationLink("Next") {
-                BuildView9(appViewModel: appViewModel)
+                BuildView9(build: build)
             }
             .buttonStyle(StandardButtonStyle())
             .bold()
@@ -84,5 +86,8 @@ struct BuildView8: View {
 }
 
 #Preview {
-    BuildView8(appViewModel: AppViewModel())
+    NavigationStack {
+        BuildView8(build: Build())
+            .modelContainer(for: Build.self)
+    }
 }

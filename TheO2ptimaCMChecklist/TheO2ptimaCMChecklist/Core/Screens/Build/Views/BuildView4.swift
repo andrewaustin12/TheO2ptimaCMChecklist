@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct BuildView4: View {
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
     
-    @ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModel
     
     var body: some View {
         NavigationStack{
@@ -21,24 +23,24 @@ struct BuildView4: View {
                 
                 Form {
                     Section {
-                        Toggle("Turn on HUD. Check operation, ensure that all LEDs are functional, and confirm orientation.", isOn: $appViewModel.buildView4ViewModel.isHudFunctioningChecked)
+                        Toggle("Turn on HUD. Check operation, ensure that all LEDs are functional, and confirm orientation.", isOn: $build.isHudFunctioningChecked)
                         
-                        Toggle("Inspect canister, head, and lid for damage or debris. ", isOn: $appViewModel.buildView4ViewModel.isCanisterHeadLidChecked)
+                        Toggle("Inspect canister, head, and lid for damage or debris. ", isOn: $build.isCanisterHeadLidChecked)
 
                     } header: {
                         Text("Step 6 - 7")
                     }
                     
                     Section {
-                        Toggle("Is Scrubber", isOn: $appViewModel.buildView4ViewModel.isScrubberStatusChecked)
-                        ScrubberStatusCard(appViewModel: appViewModel)
+                        Toggle("Is Scrubber", isOn: $build.isScrubberStatusChecked)
+                        ScrubberStatusCard(build: build)
                         
                     } header: {
                         Text("Step 8")
                     }
                     
                     Section {
-                        Toggle("Pack scrubber canister.  ", isOn: $appViewModel.buildView4ViewModel.isScrubberPackedChecked)
+                        Toggle("Pack scrubber canister.  ", isOn: $build.isScrubberPackedChecked)
                         Text("Note: \nIf using EAC, inspect cartridge for damage, mark/note cartridge direction and install cartridge.")
                             .font(.caption)
                     } header: {
@@ -50,7 +52,7 @@ struct BuildView4: View {
                 }
             }
             NavigationLink("Next") {
-                BuildView5(appViewModel: appViewModel)
+                BuildView5(build: build)
             }
             .buttonStyle(StandardButtonStyle())
             .bold()
@@ -71,5 +73,8 @@ struct BuildView4: View {
 }
 
 #Preview {
-    BuildView4(appViewModel: AppViewModel())
+    NavigationStack {
+        BuildView4(build: Build())
+            .modelContainer(for: Build.self)
+    }
 }

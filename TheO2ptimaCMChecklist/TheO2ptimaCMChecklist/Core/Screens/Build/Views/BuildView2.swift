@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BuildView2: View {
-    @ObservedObject var appViewModel: AppViewModel
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
+    //@ObservedObject var appViewModel: AppViewModel
     @FocusState private var focusedTextField: FormTextField?
     
     enum FormTextField {
@@ -25,9 +28,9 @@ struct BuildView2: View {
                 
                 Form {
                     Section {
-                        Toggle("If not completed before storage, Steramine and rinse canister, lid, loop hoses, DSV, and counterlungs and allow to dry.", isOn: $appViewModel.buildView2ViewModel.isUnitClenedBeforeDiveChecked)
+                        Toggle("If not completed before storage, Steramine and rinse canister, lid, loop hoses, DSV, and counterlungs and allow to dry.", isOn: $build.isUnitClenedBeforeDiveChecked)
                         
-                        Toggle("Fill oxygen and bailout/diluent cylinders if needed. ", isOn: $appViewModel.buildView2ViewModel.o2BailoutDilFilledChecked)
+                        Toggle("Fill oxygen and bailout/diluent cylinders if needed. ", isOn: $build.o2BailoutDilFilledChecked)
                         
                     } header: {
                         Text("Steps 1 - 2")
@@ -41,7 +44,7 @@ struct BuildView2: View {
                             HStack() {
                                 Text("Enter O2")
                                 Spacer()
-                                TextField("Mixture", text: $appViewModel.buildView2ViewModel.o2Content)
+                                TextField("Mixture", text: $build.o2Content)
                                     .focused($focusedTextField, equals: .o2Content)
                                     .onSubmit {focusedTextField = .bailoutOneDilContent}
                                     .submitLabel(.next)
@@ -52,7 +55,7 @@ struct BuildView2: View {
                             HStack() {
                                 Text("Enter Bailout/Diluent")
                                 Spacer()
-                                TextField("Mixture", text: $appViewModel.buildView2ViewModel.bailoutOneDilContent)
+                                TextField("Mixture", text: $build.bailoutOneDilContent)
                                     .focused($focusedTextField, equals: .bailoutOneDilContent)
                                     .onSubmit {focusedTextField = .bailoutTwoContent }
                                     .submitLabel(.next)
@@ -63,7 +66,7 @@ struct BuildView2: View {
                             HStack() {
                                 Text("Enter Bailout 2")
                                 Spacer()
-                                TextField("Mixture", text: $appViewModel.buildView2ViewModel.bailoutTwoContent)
+                                TextField("Mixture", text: $build.bailoutTwoContent)
                                     .focused($focusedTextField, equals: .bailoutTwoContent)
                                     .onSubmit {focusedTextField = nil }
                                     .submitLabel(.done)
@@ -79,7 +82,7 @@ struct BuildView2: View {
                 }
             }
             NavigationLink("Next") {
-                BuildView3(appViewModel: appViewModel)
+                BuildView3(build: build)
             }
             .bold()
             .font(.title3)
@@ -103,9 +106,10 @@ struct BuildView2: View {
     }
 }
 
-struct PelagianTanksAnalyzedView_Previews: PreviewProvider {
-    static var previews: some View {
-        let appViewModel = AppViewModel()
-        return BuildView2(appViewModel: appViewModel)
+#Preview {
+    NavigationStack {
+        BuildView2(build: Build())
+            .modelContainer(for: Build.self)
     }
 }
+

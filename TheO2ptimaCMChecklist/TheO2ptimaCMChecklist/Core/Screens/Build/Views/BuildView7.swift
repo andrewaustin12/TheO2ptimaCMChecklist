@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct BuildView7: View {
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
     
-    @ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModel
     
     @State var showSheet: Bool = false
     
@@ -24,7 +26,7 @@ struct BuildView7: View {
                 Form {
                     
                     Section {
-                        Toggle("Attach solenoid oxygen supply hose to fitting on head. Attach manual add feed to Oxygen MAV. ", isOn: $appViewModel.buildView7ViewModel.isOxygenSolenoidMAFAttachedChecked)
+                        Toggle("Attach solenoid oxygen supply hose to fitting on head. Attach manual add feed to Oxygen MAV. ", isOn: $build.isOxygenSolenoidMAFAttachedChecked)
                         Text("Note: \nMake sure that the inline shutoff is turned on and locked open using the lock clip. ")
                             .bold()
                             .font(.caption)
@@ -32,9 +34,9 @@ struct BuildView7: View {
                         Text("Step 22")
                     }
                     Section {
-                        Toggle("Clip and tighten canister cover. Mount oxygen cylinder, attach regulator, and attach oxygen hose to “Y” block. ", isOn: $appViewModel.buildView7ViewModel.isCanisterO2attachedToYBlock)
+                        Toggle("Clip and tighten canister cover. Mount oxygen cylinder, attach regulator, and attach oxygen hose to “Y” block. ", isOn: $build.isCanisterO2attachedToYBlock)
                         
-                        Toggle("Ensure ADV is turned off and perform NEGATIVE pressure test for a minimum of 30 seconds.", isOn: $appViewModel.buildView7ViewModel.isNegativePressTestChecked)
+                        Toggle("Ensure ADV is turned off and perform NEGATIVE pressure test for a minimum of 30 seconds.", isOn: $build.isNegativePressTestChecked)
                         
                         Button {
                             showSheet.toggle()
@@ -55,7 +57,7 @@ struct BuildView7: View {
                     }
                     
                     Section {
-                        Toggle("Ensure counterlung exhaust valve is closed and perform POSITIVE pressure test for a minimum of 2 minutes.", isOn: $appViewModel.buildView7ViewModel.isPostivePressTestChecked)
+                        Toggle("Ensure counterlung exhaust valve is closed and perform POSITIVE pressure test for a minimum of 2 minutes.", isOn: $build.isPostivePressTestChecked)
                         Button {
                             showSheet.toggle()
                         } label: {
@@ -80,7 +82,7 @@ struct BuildView7: View {
                 }
             }
             NavigationLink("Next") {
-                BuildView8(appViewModel: appViewModel)
+                BuildView8(build: build)
             }
             .buttonStyle(StandardButtonStyle())
             .bold()
@@ -102,5 +104,8 @@ struct BuildView7: View {
 
 
 #Preview {
-    BuildView7(appViewModel: AppViewModel())
+    NavigationStack {
+        BuildView7(build: Build())
+            .modelContainer(for: Build.self)
+    }
 }

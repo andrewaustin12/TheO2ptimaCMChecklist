@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct MillivoltReadingO2Card: View {
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
     
-    @ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModel
     @FocusState private var focusedTextField: FormTextField?
     
     enum FormTextField {
@@ -26,7 +28,7 @@ struct MillivoltReadingO2Card: View {
                 VStack {
                     Text("Cell 1")
                     
-                    TextField("mV", text: $appViewModel.buildView5ViewModel.cellOneO2)
+                    TextField("mV", text: $build.cellOneO2)
                         .focused($focusedTextField, equals: .cellOneO2)
                         .onSubmit {focusedTextField = .cellTwoO2}
                         .submitLabel(.next)
@@ -38,7 +40,7 @@ struct MillivoltReadingO2Card: View {
                 VStack {
                     Text("Cell 2")
                     
-                    TextField("mV", text: $appViewModel.buildView5ViewModel.cellTwoO2)
+                    TextField("mV", text: $build.cellTwoO2)
                         .focused($focusedTextField, equals: .cellTwoO2)
                         .onSubmit {focusedTextField = .cellThreeO2}
                         .submitLabel(.next)
@@ -50,7 +52,7 @@ struct MillivoltReadingO2Card: View {
                 VStack {
                     Text("Cell 3")
                     
-                    TextField("mV", text: $appViewModel.buildView5ViewModel.cellThreeO2)
+                    TextField("mV", text: $build.cellThreeO2)
                         .focused($focusedTextField, equals: .cellThreeO2)
                         .onSubmit {focusedTextField = nil}
                         .submitLabel(.done)
@@ -71,5 +73,5 @@ struct MillivoltReadingO2Card: View {
 }
 
 #Preview {
-    MillivoltReadingO2Card(appViewModel: AppViewModel())
+    MillivoltReadingO2Card(build: Build())
 }

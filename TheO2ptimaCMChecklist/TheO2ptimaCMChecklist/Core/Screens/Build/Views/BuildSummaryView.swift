@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct BuildSummaryView: View {
-    @ObservedObject var appViewModel: AppViewModel
+    @State var build: Build
+    @Environment(\.modelContext) var modelContext
+    //@ObservedObject var appViewModel: AppViewModel
 
+    @State private var navigateToMain = false
+    
     var body: some View {
         NavigationStack {
             VStack {
-                if appViewModel.areAllStepsCompleted {
+                if build.areAllStepsCompleted {
                     SummaryCard(isComplete: true, step: "All steps complete!")
                         .padding(.top)
 
@@ -23,27 +27,27 @@ struct BuildSummaryView: View {
                             .font(.largeTitle)
                         
                         List {
-                            Text("You have \(appViewModel.buildView4ViewModel.isUsedSorbMin) min left on your scrubber.")
-                            Text("You have \(appViewModel.buildView8ViewModel.oxygenPressure) Bar of O2 for the dive.")
+                            Text("You have \(build.isUsedSorbMin) min left on your scrubber.")
+                            Text("You have \(build.oxygenPressure) Bar of O2 for the dive.")
                                 
                                 SummaryGasCard(title: "Gas Content",
-                                               o2Content: appViewModel.buildView2ViewModel.o2Content,
-                                               bailoutOneDilContent: appViewModel.buildView2ViewModel.bailoutOneDilContent,
-                                               bailoutTwoContent: appViewModel.buildView2ViewModel.bailoutTwoContent
+                                               o2Content: build.o2Content,
+                                               bailoutOneDilContent: build.bailoutOneDilContent,
+                                               bailoutTwoContent: build.bailoutTwoContent
                                 )
                                 SummaryCellAirReading(title: "mV Reading w/ Air",
-                                                      cell1: appViewModel.buildView3ViewModel.cellOneAir,
-                                                      cell2: appViewModel.buildView3ViewModel.cellTwoAir,
-                                                      cell3: appViewModel.buildView3ViewModel.cellThreeAir
+                                                      cell1: build.cellOneAir,
+                                                      cell2: build.cellTwoAir,
+                                                      cell3: build.cellThreeAir
                                 )
                                 SummaryVoltageCard(title: "Voltage",
-                                                   extVoltage: appViewModel.buildView3ViewModel.extVoltage,
-                                                   intVoltage: appViewModel.buildView3ViewModel.intVoltage
+                                                   extVoltage: build.extVoltage,
+                                                   intVoltage: build.intVoltage
                                 )
                                 SummaryCellO2Card(title: "mV Reading w/ Oxygen",
-                                                  cell1: appViewModel.buildView5ViewModel.cellOneO2,
-                                                  cell2: appViewModel.buildView5ViewModel.cellTwoO2,
-                                                  cell3: appViewModel.buildView5ViewModel.cellThreeO2
+                                                  cell1: build.cellOneO2,
+                                                  cell2: build.cellTwoO2,
+                                                  cell3: build.cellThreeO2
                                 )
                 
                         }
@@ -58,7 +62,7 @@ struct BuildSummaryView: View {
 
                     ScrollView {
                         Section {
-                            ForEach(appViewModel.incompleteSteps, id: \.self) { step in
+                            ForEach(build.incompleteSteps, id: \.self) { step in
                                 SummaryCard(isComplete: false, step: "Step \(step)")
                             }
                         }
@@ -68,14 +72,15 @@ struct BuildSummaryView: View {
             }
             .padding(.bottom)
 
-            NavigationLink("Finish") {
-                MainTabView()
+            Button("Finish") {
+                addBuildToHistory()
+                navigateToMain = true // Set to navigate
             }
             .font(.title)
             .bold()
             .buttonStyle(StandardButtonStyle())
-            .disabled(!appViewModel.areAllStepsCompleted)
-            .foregroundColor(appViewModel.areAllStepsCompleted ? .white : .gray)
+            .disabled(!build.areAllStepsCompleted)
+            .foregroundColor(build.areAllStepsCompleted ? .white : .gray)
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     NavigationLink {
@@ -85,11 +90,22 @@ struct BuildSummaryView: View {
                     }
                 }
             }
+            .navigationDestination(isPresented: $navigateToMain) {
+                MainTabView() // Destination view
+            }
         }
+    }
+    
+    func addBuildToHistory() {
+        modelContext.insert(build)
+        print("Build inserted into history")
     }
 }
 
 
 #Preview {
-    BuildSummaryView(appViewModel: AppViewModel())
+    NavigationStack {
+        BuildSummaryView(build: Build())
+            .modelContainer(for: Build.self)
+    }
 }

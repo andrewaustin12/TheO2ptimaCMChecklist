@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct StartBuildView: View {
-    @StateObject var appViewModel = AppViewModel()
+    //@StateObject var appViewModel = AppViewModel()
+    @Environment(\.modelContext) var modelContext
      
     var body: some View {
         NavigationStack {
@@ -24,7 +26,7 @@ struct StartBuildView: View {
             .padding()
             
             NavigationLink {
-               BuildView2(appViewModel: appViewModel)
+               BuildView2(build: Build())
             } label: {
                 Text("Begin")
                     .font(.title3)
