@@ -29,7 +29,7 @@ struct ThanksView: View {
                     .tint(.white)
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
-                    .background(.blue, in: RoundedRectangle(cornerRadius: 10,
+                    .background(.unitPrimary, in: RoundedRectangle(cornerRadius: 10,
                                                             style: .continuous))
             }
         }

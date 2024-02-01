@@ -33,7 +33,7 @@ struct TipsItemView: View {
                     }
                 }
             }
-            .tint(.blue)
+            .tint(.unitPrimary)
             .buttonStyle(.bordered)
             .font(.callout.bold())
         }
