@@ -13,7 +13,7 @@ struct StandardButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
             configuration.label
                 .frame(minWidth: 0,
-                       maxWidth: 260)
+                       maxWidth: 320)
                 .frame(height: 45)
                 .background( RoundedRectangle(cornerRadius: 5.0).fill(.unitPrimary).opacity(colorScheme == .dark ? 0.7 : 1.0)
                 

@@ -60,6 +60,7 @@
 		3FAE0AA32B6BB5E600FB0110 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AA22B6BB5E600FB0110 /* DetailView.swift */; };
 		3FAE0AA52B6BB5F100FB0110 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AA42B6BB5F100FB0110 /* ToDo.swift */; };
 		3FAE0AA92B6BB70400FB0110 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AA82B6BB70400FB0110 /* NotificationHandler.swift */; };
+		3FAE0AAE2B6BBC3B00FB0110 /* MyBioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AAD2B6BBC3B00FB0110 /* MyBioView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		3FAE0AA22B6BB5E600FB0110 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		3FAE0AA42B6BB5F100FB0110 /* ToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		3FAE0AA82B6BB70400FB0110 /* NotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		3FAE0AAD2B6BBC3B00FB0110 /* MyBioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBioView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 			children = (
 				3F03B99B2B6B9CCF00E31152 /* Tips */,
 				3FA139F12ACED09C0059932A /* SettingsView.swift */,
+				3FAE0AAD2B6BBC3B00FB0110 /* MyBioView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				3FAE0AA92B6BB70400FB0110 /* NotificationHandler.swift in Sources */,
 				3FA139D32ACDFDB70059932A /* MainTabView.swift in Sources */,
 				3F03B9AD2B6BA79100E31152 /* TipsItemView.swift in Sources */,
+				3FAE0AAE2B6BBC3B00FB0110 /* MyBioView.swift in Sources */,
 				3FA13A1A2AD014630059932A /* BuildSummaryView.swift in Sources */,
 				3FA13A0F2AD00A240059932A /* BuildView7.swift in Sources */,
 				3FA13A2B2AD07ECB0059932A /* SummaryScrubberCard.swift in Sources */,

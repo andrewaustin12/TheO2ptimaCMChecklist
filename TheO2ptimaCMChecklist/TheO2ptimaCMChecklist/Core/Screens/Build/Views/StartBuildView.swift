@@ -12,11 +12,16 @@ struct StartBuildView: View {
      
     var body: some View {
         NavigationStack {
+            Spacer()
             VStack {
-                Text("O2ptima CM Build Checklist")
-                    .font(.title)
-                    .multilineTextAlignment(.center)
+                
+                Image("app-logo")
+                    .resizable()
+                    .frame(width: 300, height: 300)
+                    .clipShape(RoundedRectangle(cornerRadius: 10.0))
+                    .font(.system(size: 200))
             }
+            .padding()
             
             NavigationLink {
                BuildView2(appViewModel: appViewModel)
@@ -26,6 +31,7 @@ struct StartBuildView: View {
                     .bold()
                     .foregroundStyle(.white)
             }.buttonStyle(StandardButtonStyle())
+            Spacer()
         }
     }
 }

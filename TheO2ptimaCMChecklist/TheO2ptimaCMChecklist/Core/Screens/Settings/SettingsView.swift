@@ -16,7 +16,9 @@ struct SettingsView: View {
                 Section("Developer") {
                     HStack{
                         Label("Made by:", systemImage: "person")
-                        TwitterLink()
+                        NavigationLink("Andrew") {
+                            MyBioView()
+                        }
                     }
                     NavigationLink(destination: BuyMeACoffeeView()) {
                         Label("Support future development", systemImage: "mug.fill")
@@ -94,7 +96,9 @@ struct SettingsView: View {
 
 
 #Preview {
-    SettingsView()
+    NavigationStack {
+        SettingsView()
+    }
 }
 
 struct TwitterLink: View {
