@@ -65,7 +65,7 @@ struct InlineTimer: View {
             }
         }
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Negative Test Complete"), message: Text("The countdown timer has finished."), dismissButton: .default(Text("OK")))
+            Alert(title: Text("Timer Complete"), message: Text("The countdown timer has finished."), dismissButton: .default(Text("OK")))
         }
     }
 
