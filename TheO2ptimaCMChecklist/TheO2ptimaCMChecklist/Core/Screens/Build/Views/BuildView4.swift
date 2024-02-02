@@ -40,9 +40,10 @@ struct BuildView4: View {
                     }
                     
                     Section {
-                        Toggle("Pack scrubber canister.  ", isOn: $build.isScrubberPackedChecked)
+                        Toggle("Pack scrubber canister", isOn: $build.isScrubberPackedChecked)
                         Text("Note: \nIf using EAC, inspect cartridge for damage, mark/note cartridge direction and install cartridge.")
                             .font(.caption)
+                            .foregroundStyle(.unitPrimary)
                     } header: {
                         Text("Step 9")
                     }

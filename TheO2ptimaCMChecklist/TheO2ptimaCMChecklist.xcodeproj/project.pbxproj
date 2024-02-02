@@ -39,7 +39,7 @@
 		3FA13A052ACF42CF0059932A /* BuildView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A042ACF42CF0059932A /* BuildView4.swift */; };
 		3FA13A072ACFFCEF0059932A /* ScrubberStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A062ACFFCEF0059932A /* ScrubberStatusCard.swift */; };
 		3FA13A092AD0036D0059932A /* BuildView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A082AD0036D0059932A /* BuildView5.swift */; };
-		3FA13A0B2AD006190059932A /* MillivoltReadingO2Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A0A2AD006190059932A /* MillivoltReadingO2Card.swift */; };
+		3FA13A0B2AD006190059932A /* MvReadingO2Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A0A2AD006190059932A /* MvReadingO2Card.swift */; };
 		3FA13A0D2AD007E80059932A /* BuildView6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A0C2AD007E80059932A /* BuildView6.swift */; };
 		3FA13A0F2AD00A240059932A /* BuildView7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A0E2AD00A240059932A /* BuildView7.swift */; };
 		3FA13A122AD00BAF0059932A /* CountdownTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA13A112AD00BAF0059932A /* CountdownTimerView.swift */; };
@@ -61,9 +61,10 @@
 		3FAE0AA52B6BB5F100FB0110 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AA42B6BB5F100FB0110 /* ToDo.swift */; };
 		3FAE0AA92B6BB70400FB0110 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AA82B6BB70400FB0110 /* NotificationHandler.swift */; };
 		3FAE0AAE2B6BBC3B00FB0110 /* MyBioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AAD2B6BBC3B00FB0110 /* MyBioView.swift */; };
-		3FAE0AB02B6BC5F800FB0110 /* CellAccuracyBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AAF2B6BC5F800FB0110 /* CellAccuracyBarChart.swift */; };
+		3FAE0AB02B6BC5F800FB0110 /* CellAirChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AAF2B6BC5F800FB0110 /* CellAirChart.swift */; };
 		3FAE0AB22B6BC5FD00FB0110 /* BuildLogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AB12B6BC5FD00FB0110 /* BuildLogDetailView.swift */; };
 		3FAE0AB42B6BC93E00FB0110 /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AB32B6BC93E00FB0110 /* Build.swift */; };
+		3FAE0AB62B6D129B00FB0110 /* CellO2Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AB52B6D129B00FB0110 /* CellO2Chart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,7 +102,7 @@
 		3FA13A042ACF42CF0059932A /* BuildView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildView4.swift; sourceTree = "<group>"; };
 		3FA13A062ACFFCEF0059932A /* ScrubberStatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrubberStatusCard.swift; sourceTree = "<group>"; };
 		3FA13A082AD0036D0059932A /* BuildView5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildView5.swift; sourceTree = "<group>"; };
-		3FA13A0A2AD006190059932A /* MillivoltReadingO2Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillivoltReadingO2Card.swift; sourceTree = "<group>"; };
+		3FA13A0A2AD006190059932A /* MvReadingO2Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvReadingO2Card.swift; sourceTree = "<group>"; };
 		3FA13A0C2AD007E80059932A /* BuildView6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildView6.swift; sourceTree = "<group>"; };
 		3FA13A0E2AD00A240059932A /* BuildView7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildView7.swift; sourceTree = "<group>"; };
 		3FA13A112AD00BAF0059932A /* CountdownTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerView.swift; sourceTree = "<group>"; };
@@ -123,9 +124,10 @@
 		3FAE0AA42B6BB5F100FB0110 /* ToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		3FAE0AA82B6BB70400FB0110 /* NotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		3FAE0AAD2B6BBC3B00FB0110 /* MyBioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBioView.swift; sourceTree = "<group>"; };
-		3FAE0AAF2B6BC5F800FB0110 /* CellAccuracyBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAccuracyBarChart.swift; sourceTree = "<group>"; };
+		3FAE0AAF2B6BC5F800FB0110 /* CellAirChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAirChart.swift; sourceTree = "<group>"; };
 		3FAE0AB12B6BC5FD00FB0110 /* BuildLogDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildLogDetailView.swift; sourceTree = "<group>"; };
 		3FAE0AB32B6BC93E00FB0110 /* Build.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Build.swift; sourceTree = "<group>"; };
+		3FAE0AB52B6D129B00FB0110 /* CellO2Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellO2Chart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,7 +294,7 @@
 				3FA13A002ACF3C790059932A /* MvReadingAmbientAirCard.swift */,
 				3FA13A022ACF40F70059932A /* VoltageCard.swift */,
 				3FA13A062ACFFCEF0059932A /* ScrubberStatusCard.swift */,
-				3FA13A0A2AD006190059932A /* MillivoltReadingO2Card.swift */,
+				3FA13A0A2AD006190059932A /* MvReadingO2Card.swift */,
 				3FA13A152AD010B30059932A /* OxygenPressureCard.swift */,
 				3FA13A222AD05B2E0059932A /* SummaryCard.swift */,
 				3FA13A242AD077FF0059932A /* SummaryGasCard.swift */,
@@ -368,7 +370,8 @@
 			children = (
 				3FAE0AA02B6BB2E400FB0110 /* BuildLogsView.swift */,
 				3FAE0AB12B6BC5FD00FB0110 /* BuildLogDetailView.swift */,
-				3FAE0AAF2B6BC5F800FB0110 /* CellAccuracyBarChart.swift */,
+				3FAE0AAF2B6BC5F800FB0110 /* CellAirChart.swift */,
+				3FAE0AB52B6D129B00FB0110 /* CellO2Chart.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -472,7 +475,7 @@
 				3FA13A2D2AD14B200059932A /* SummaryCellO2Card.swift in Sources */,
 				3FA139F02ACED07D0059932A /* StartBuildView.swift in Sources */,
 				3FA13A252AD077FF0059932A /* SummaryGasCard.swift in Sources */,
-				3FAE0AB02B6BC5F800FB0110 /* CellAccuracyBarChart.swift in Sources */,
+				3FAE0AB02B6BC5F800FB0110 /* CellAirChart.swift in Sources */,
 				3FAE0AA12B6BB2E400FB0110 /* BuildLogsView.swift in Sources */,
 				3FA13A092AD0036D0059932A /* BuildView5.swift in Sources */,
 				3FA139FF2ACF3A6A0059932A /* BuildView3.swift in Sources */,
@@ -498,7 +501,7 @@
 				3F03B9A72B6BA77700E31152 /* myTipProductIdentifiers.swift in Sources */,
 				3FA13A032ACF40F70059932A /* VoltageCard.swift in Sources */,
 				3FAE0AA52B6BB5F100FB0110 /* ToDo.swift in Sources */,
-				3FA13A0B2AD006190059932A /* MillivoltReadingO2Card.swift in Sources */,
+				3FA13A0B2AD006190059932A /* MvReadingO2Card.swift in Sources */,
 				3FAE0AA32B6BB5E600FB0110 /* DetailView.swift in Sources */,
 				3FAE0AA92B6BB70400FB0110 /* NotificationHandler.swift in Sources */,
 				3FA139D32ACDFDB70059932A /* MainTabView.swift in Sources */,
@@ -519,6 +522,7 @@
 				3FA139D12ACDFDB70059932A /* TheO2ptimaCMChecklistApp.swift in Sources */,
 				3F03B9A52B6BA76E00E31152 /* TestView.swift in Sources */,
 				3FA139E62ACDFF7F0059932A /* WarningHeaderView.swift in Sources */,
+				3FAE0AB62B6D129B00FB0110 /* CellO2Chart.swift in Sources */,
 				3FA139FD2ACF39E70059932A /* ProgressBarView.swift in Sources */,
 				3FA139E82ACDFFC60059932A /* RoundedShape.swift in Sources */,
 			);

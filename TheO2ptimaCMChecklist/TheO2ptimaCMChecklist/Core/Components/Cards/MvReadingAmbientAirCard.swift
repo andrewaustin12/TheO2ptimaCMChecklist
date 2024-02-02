@@ -1,78 +1,62 @@
-//
-//  MvReadingAmbientAirCard.swift
-//  TheO2ptimaCMChecklist
-//
-//  Created by andrew austin on 10/5/23.
-//
-
 import SwiftUI
 
 struct MvReadingAmbientAirCard: View {
-    @State var build: Build
-    @Environment(\.modelContext) var modelContext
+    @Binding var build: Build
+    // Assuming you have the @Environment property for the model context as needed
     
-    //@ObservedObject var appViewModel: AppViewModel
-    @FocusState private var focusedTextField: FormTextField?
-    
-    enum FormTextField {
-        case  cellOneAir, cellTwoAir, cellThreeAir
-    }
-    
+    @State private var cellOneAirInput = ""
+    @State private var cellTwoAirInput = ""
+    @State private var cellThreeAirInput = ""
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center, spacing: 10) {
             Text("Record mV Readings w/ Air:")
                 .font(.title3)
                 .padding(.bottom, 1)
-                .padding(.top, 0)
+            
             HStack {
-                VStack {
-                    Text("Cell 1")
-                    
-                    TextField("mV", text: $build.cellOneAir)
-                        .focused($focusedTextField, equals: .cellOneAir)
-                        .onSubmit {focusedTextField = .cellTwoAir}
-                        .submitLabel(.next)
-                        .keyboardType(.numbersAndPunctuation)
-                        .frame(width: 80)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
+                cellInputField(title: "Cell 1", input: $cellOneAirInput, cellValue: $build.cellOneAir)
+                
                 Spacer()
-                VStack {
-                    Text("Cell 2")
-                    
-                    TextField("mV", text: $build.cellTwoAir)
-                        .focused($focusedTextField, equals: .cellTwoAir)
-                        .onSubmit {focusedTextField = .cellThreeAir}
-                        .submitLabel(.next)
-                        .keyboardType(.numbersAndPunctuation)
-                        .frame(width: 80)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
+                
+                cellInputField(title: "Cell 2", input: $cellTwoAirInput, cellValue: $build.cellTwoAir)
+                
                 Spacer()
-                VStack {
-                    Text("Cell 3")
-                    
-                    TextField("mV", text: $build.cellThreeAir)
-                        .focused($focusedTextField, equals: .cellThreeAir)
-                        .onSubmit {focusedTextField = nil}
-                        .submitLabel(.done)
-                        .keyboardType(.numbersAndPunctuation)
-                        .frame(width: 80)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
+                
+                cellInputField(title: "Cell 3", input: $cellThreeAirInput, cellValue: $build.cellThreeAir)
             }
             .padding()
         }
-        
+        .onAppear {
+            // Initialize the text fields with existing values if they are not 0
+            cellOneAirInput = build.cellOneAir != 0 ? String(build.cellOneAir) : ""
+            cellTwoAirInput = build.cellTwoAir != 0 ? String(build.cellTwoAir) : ""
+            cellThreeAirInput = build.cellThreeAir != 0 ? String(build.cellThreeAir) : ""
+        }
     }
     
+    private func cellInputField(title: String, input: Binding<String>, cellValue: Binding<Double>) -> some View {
+        VStack {
+            Text(title)
+            TextField("mV", text: input)
+                .keyboardType(.decimalPad)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .onChange(of: input.wrappedValue) { newValue in
+                    if let value = Double(newValue) {
+                        cellValue.wrappedValue = value
+                    } else {
+                        // If the new value isn't a valid Double, consider how you want to handle this
+                        // For now, we'll not update the cellValue to avoid overriding with incorrect data
+                    }
+                }
+        }
+    }
 }
 
 
-#Preview {
-    NavigationStack {
-        MvReadingAmbientAirCard(build: Build())
-            .modelContainer(for: Build.self)
+// Preview for development and testing
+struct MvReadingAmbientAirCard_Previews: PreviewProvider {
+    static var previews: some View {
+        MvReadingAmbientAirCard(build: .constant(Build()))
     }
 }

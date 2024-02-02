@@ -27,7 +27,8 @@ struct BuildView3: View {
                         Toggle("Turn on handset and check O2 sensor display in ambient air.", isOn: $build.o2SensorsChecked)
                         Text("Note: \nReadings should be between 10 and 14 mV \n(for Analytical Industries Inc. sensors).")
                             .font(.caption)
-                        MvReadingAmbientAirCard(build: build)
+                            .foregroundStyle(.unitPrimary)
+                        MvReadingAmbientAirCard(build: $build)
                     } header: {
                         Text("Step 4")
                     }

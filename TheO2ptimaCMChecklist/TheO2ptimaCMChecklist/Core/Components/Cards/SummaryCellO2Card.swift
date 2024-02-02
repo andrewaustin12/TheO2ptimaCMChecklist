@@ -33,7 +33,7 @@ struct SummaryCellO2Card: View {
                 VStack{
                     Text("Cell 3")
                         .font(.headline)
-                    Text("\(cell2) mV")
+                    Text("\(cell3) mV")
                 }
             }
         }

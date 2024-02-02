@@ -27,6 +27,7 @@ struct BuildView6: View {
                         Toggle("Install both water trap tubes into counterlungs.", isOn: $build.isWaterTrapInstalledOnCounterlungsChecked)
                         Text("Note: \nThe black machined tube is for the exhale side.")
                             .font(.caption)
+                            .foregroundStyle(.unitPrimary)
                     } header: {
                         Text("Step 16")
                     }

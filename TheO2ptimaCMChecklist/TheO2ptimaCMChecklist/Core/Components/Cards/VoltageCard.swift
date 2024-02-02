@@ -39,6 +39,7 @@ struct VoltageCard: View {
                     
                     Text("min 7.6V")
                         .font(.caption)
+                        .foregroundStyle(.unitPrimary)
                 }
                 Spacer()
                 VStack {
@@ -54,6 +55,7 @@ struct VoltageCard: View {
                     
                     Text("min depends on battery")
                         .font(.caption)
+                        .foregroundStyle(.unitPrimary)
                 }
                 Spacer()
             }

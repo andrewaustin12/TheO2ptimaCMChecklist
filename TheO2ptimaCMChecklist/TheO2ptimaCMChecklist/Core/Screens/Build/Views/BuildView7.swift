@@ -30,6 +30,7 @@ struct BuildView7: View {
                         Text("Note: \nMake sure that the inline shutoff is turned on and locked open using the lock clip. ")
                             .bold()
                             .font(.caption)
+                            .foregroundStyle(.unitPrimary)
                     } header: {
                         Text("Step 22")
                     }

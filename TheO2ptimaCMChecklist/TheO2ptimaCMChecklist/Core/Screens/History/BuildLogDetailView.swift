@@ -60,33 +60,36 @@ struct BuildLogDetailView: View {
                 
                 Section("Cells @ Air") {
                     HStack {
+                        // Cell 1
                         VStack {
                             Text("Cell 1:")
                                 .font(.headline)
-                            Text("\(build.cellOneAir)mV")
+                            Text(cellValue(build.cellOneAir))
                                 .font(.headline)
                                 .foregroundColor(.gray)
                         }
                         Spacer() // Spacers to evenly distribute the VStacks
                         
+                        // Cell 2
                         VStack {
                             Text("Cell 2:")
                                 .font(.headline)
-                            Text("\(build.cellTwoAir)mV")
+                            Text(cellValue(build.cellTwoAir))
                                 .font(.headline)
                                 .foregroundColor(.gray)
                         }
                         Spacer()
                         
+                        // Cell 3
                         VStack {
                             Text("Cell 3:")
                                 .font(.headline)
-                            Text("\(build.cellThreeAir)mV")
+                            Text(cellValue(build.cellThreeAir))
                                 .font(.headline)
                                 .foregroundColor(.gray)
                         }
                     }
-                    .frame(maxWidth: .infinity) // Ensure HStack takes the full available width
+                    .frame(maxWidth: .infinity)
                 }
                 
                 Section("Cells @ O2") {
@@ -94,7 +97,7 @@ struct BuildLogDetailView: View {
                         VStack {
                             Text("Cell 1:")
                                 .font(.headline)
-                            Text("\(build.cellOneO2)mV")
+                            Text(cellValue(build.cellOneO2))
                                 .font(.headline)
                                 .foregroundColor(.gray)
                         }
@@ -103,7 +106,7 @@ struct BuildLogDetailView: View {
                         VStack {
                             Text("Cell 2:")
                                 .font(.headline)
-                            Text("\(build.cellTwoO2)mV")
+                            Text(cellValue(build.cellTwoO2))
                                 .font(.headline)
                                 .foregroundColor(.gray)
                         }
@@ -112,7 +115,7 @@ struct BuildLogDetailView: View {
                         VStack {
                             Text("Cell 3:")
                                 .font(.headline)
-                            Text("\(build.cellThreeO2)mV")
+                            Text(cellValue(build.cellThreeO2))
                                 .font(.headline)
                                 .foregroundColor(.gray)
                         }
@@ -154,11 +157,23 @@ struct BuildLogDetailView: View {
                         }
                         Spacer()
                         VStack {
-                            Text("Bailout/Diluent:")
+                            Text("Bail/Dil:")
                                 .font(.headline)
                             Text(formatGasMixture(build.bailoutOneDilContent))
                                 .font(.headline)
                                 .foregroundColor(.gray)
+                        }
+                        // Show Bailout/Diluent 2 if it's not an empty string
+                        if !build.bailoutTwoContent.isEmpty {
+                            Spacer()
+                            
+                            VStack {
+                                Text("Bail/Dil 2:")
+                                    .font(.headline)
+                                Text(formatGasMixture(build.bailoutTwoContent))
+                                    .font(.headline)
+                                    .foregroundColor(.gray)
+                            }
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -179,7 +194,7 @@ struct BuildLogDetailView: View {
                 }
                 
             }
-            .listStyle(.insetGrouped)
+            .listStyle(.plain)
             .navigationTitle("Build #\(buildNumber)")
             .navigationBarTitleDisplayMode(.large)
         }
@@ -216,9 +231,16 @@ struct BuildLogDetailView: View {
             return mixture
         }
     }
-
-
-
+    
+    // Helper function to format the cell value
+    private func cellValue(_ value: Double?) -> String {
+        if let unwrappedValue = value {
+            return String(format: "%.2f mV", unwrappedValue)
+        } else {
+            return "N/A" // or any default value you prefer
+        }
+    }
+    
     
 }
 

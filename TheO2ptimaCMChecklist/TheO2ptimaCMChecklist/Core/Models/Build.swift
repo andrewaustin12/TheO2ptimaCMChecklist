@@ -23,9 +23,9 @@ class Build {
     var o2SensorsChecked = false
     var isSetPointChanged = false
     var isSetPointTo19 = false
-    var cellOneAir = ""
-    var cellTwoAir = ""
-    var cellThreeAir = ""
+    var cellOneAir: Double
+    var cellTwoAir: Double
+    var cellThreeAir: Double
     var extVoltage = ""
     var intVoltage = ""
     var isHudFunctioningChecked = false
@@ -43,9 +43,9 @@ class Build {
     var isO2FlushedChecked = false
     var isControllerCalibratedChecked = false
     var isMvWithO2Checked = false
-    var cellOneO2 = ""
-    var cellTwoO2 = ""
-    var cellThreeO2 = ""
+    var cellOneO2: Double
+    var cellTwoO2: Double
+    var cellThreeO2: Double
     var isWaterTrapInstalledOnCounterlungsChecked = false
     var isCanisterInstalledOntoCounterLungs = false
     var isUnitPiecesInspectedChecked = false
@@ -74,9 +74,9 @@ class Build {
         o2SensorsChecked: Bool = false,
         isSetPointChanged: Bool = false,
         isSetPointTo19: Bool = false,
-        cellOneAir: String = "",
-        cellTwoAir: String = "",
-        cellThreeAir: String = "",
+        cellOneAir: Double = 0.0, 
+        cellTwoAir: Double = 0.0,
+        cellThreeAir: Double = 0.0,
         extVoltage: String = "",
         intVoltage: String = "",
         isHudFunctioningChecked: Bool = false,
@@ -94,9 +94,9 @@ class Build {
         isO2FlushedChecked: Bool = false,
         isControllerCalibratedChecked: Bool = false,
         isMvWithO2Checked: Bool = false,
-        cellOneO2: String = "",
-        cellTwoO2: String = "",
-        cellThreeO2: String = "",
+        cellOneO2: Double = 0.0,
+        cellTwoO2: Double = 0.0,
+        cellThreeO2: Double = 0.0,
         isWaterTrapInstalledOnCounterlungsChecked: Bool = false,
         isCanisterInstalledOntoCounterLungs: Bool = false,
         isUnitPiecesInspectedChecked: Bool = false,
@@ -176,9 +176,9 @@ class Build {
 
         // MARK: BuildView3
             o2SensorsChecked &&
-            !cellOneAir.isEmpty &&
-            !cellTwoAir.isEmpty &&
-            !cellThreeAir.isEmpty &&
+            cellOneAir != 0.0 &&
+            cellTwoAir != 0.0 &&
+            cellThreeAir != 0.0 &&
             isSetPointChanged &&
             !extVoltage.isEmpty &&
             !intVoltage.isEmpty &&
@@ -200,9 +200,9 @@ class Build {
             isO2FlushedChecked &&
             isControllerCalibratedChecked &&
             isMvWithO2Checked &&
-            !cellOneO2.isEmpty &&
-            !cellTwoO2.isEmpty &&
-            !cellThreeO2.isEmpty &&
+            cellOneO2 != 0.0 &&
+            cellTwoO2 != 0.0 &&
+            cellThreeO2 != 0.0 &&
             
         // MARK: BuildView6
             isWaterTrapInstalledOnCounterlungsChecked &&
@@ -251,15 +251,15 @@ class Build {
             print("Step 4 incomplete")
         }
         
-        if cellOneAir.isEmpty {
+        if cellOneAir == 0.0 {
             steps.append(4)
             print("Step 4 incomplete")
         }
-        if cellTwoAir.isEmpty {
+        if cellTwoAir == 0.0 {
             steps.append(4)
             print("Step 4 incomplete")
         }
-        if cellThreeAir.isEmpty {
+        if cellThreeAir == 0.0 {
             steps.append(4)
             print("Step 4 incomplete")
         }
@@ -322,13 +322,13 @@ class Build {
         if !isMvWithO2Checked {
             steps.append(15)
         }
-        if cellOneO2.isEmpty {
+        if cellOneO2 == 0.0 {
             steps.append(15)
         }
-        if cellTwoO2.isEmpty {
+        if cellTwoO2 == 0.0 {
             steps.append(15)
         }
-        if cellThreeO2.isEmpty {
+        if cellThreeO2 == 0.0 {
             steps.append(15)
         }
         if !isWaterTrapInstalledOnCounterlungsChecked {

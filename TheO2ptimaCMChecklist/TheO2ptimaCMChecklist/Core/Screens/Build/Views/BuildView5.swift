@@ -41,7 +41,8 @@ struct BuildView5: View {
                         Toggle("Check and record mV readings while filled with O2:", isOn: $build.isMvWithO2Checked)
                         Text("Note: \nReadings should be between 50 and 62 mV (for Analytical Industries Inc. sensors).")
                             .font(.caption)
-                        MillivoltReadingO2Card(build: build)
+                            .foregroundStyle(.unitPrimary)
+                        MvReadingO2Card(build: $build)
                     } header: {
                         Text("Step 15")
                     }

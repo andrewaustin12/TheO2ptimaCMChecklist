@@ -36,18 +36,18 @@ struct BuildSummaryView: View {
                                                bailoutTwoContent: build.bailoutTwoContent
                                 )
                                 SummaryCellAirReading(title: "mV Reading w/ Air",
-                                                      cell1: build.cellOneAir,
-                                                      cell2: build.cellTwoAir,
-                                                      cell3: build.cellThreeAir
+                                                      cell1: String(format: "%.2f", build.cellOneAir),
+                                                      cell2: String(format: "%.2f", build.cellTwoAir),
+                                                      cell3: String(format: "%.2f", build.cellThreeAir)
                                 )
                                 SummaryVoltageCard(title: "Voltage",
                                                    extVoltage: build.extVoltage,
                                                    intVoltage: build.intVoltage
                                 )
                                 SummaryCellO2Card(title: "mV Reading w/ Oxygen",
-                                                  cell1: build.cellOneO2,
-                                                  cell2: build.cellTwoO2,
-                                                  cell3: build.cellThreeO2
+                                                  cell1: String(format: "%.2f", build.cellOneO2),
+                                                  cell2: String(format: "%.2f", build.cellTwoO2),
+                                                  cell3: String(format: "%.2f", build.cellThreeO2)
                                 )
                 
                         }
