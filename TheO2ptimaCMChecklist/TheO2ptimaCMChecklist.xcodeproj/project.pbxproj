@@ -65,6 +65,7 @@
 		3FAE0AB22B6BC5FD00FB0110 /* BuildLogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AB12B6BC5FD00FB0110 /* BuildLogDetailView.swift */; };
 		3FAE0AB42B6BC93E00FB0110 /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AB32B6BC93E00FB0110 /* Build.swift */; };
 		3FAE0AB62B6D129B00FB0110 /* CellO2Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AB52B6D129B00FB0110 /* CellO2Chart.swift */; };
+		3FAE0AB82B6D2C9D00FB0110 /* InlineTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0AB72B6D2C9D00FB0110 /* InlineTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		3FAE0AB12B6BC5FD00FB0110 /* BuildLogDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildLogDetailView.swift; sourceTree = "<group>"; };
 		3FAE0AB32B6BC93E00FB0110 /* Build.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Build.swift; sourceTree = "<group>"; };
 		3FAE0AB52B6D129B00FB0110 /* CellO2Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellO2Chart.swift; sourceTree = "<group>"; };
+		3FAE0AB72B6D2C9D00FB0110 /* InlineTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				3FA13A112AD00BAF0059932A /* CountdownTimerView.swift */,
+				3FAE0AB72B6D2C9D00FB0110 /* InlineTimer.swift */,
 			);
 			path = Timers;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				3FA139F42ACEDDBC0059932A /* BuildView2.swift in Sources */,
 				3FA13A272AD07B9F0059932A /* SummaryCellAirReading.swift in Sources */,
 				3F03B9AF2B6BA79700E31152 /* ThanksView.swift in Sources */,
+				3FAE0AB82B6D2C9D00FB0110 /* InlineTimer.swift in Sources */,
 				3FA139F72ACF1BB80059932A /* TitleHeaderView.swift in Sources */,
 				3FAE0A9C2B6BB2B000FB0110 /* GearListView.swift in Sources */,
 				3FA139D12ACDFDB70059932A /* TheO2ptimaCMChecklistApp.swift in Sources */,

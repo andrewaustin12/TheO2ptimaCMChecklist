@@ -13,6 +13,9 @@ struct BuildView7: View {
     
     //@ObservedObject var appViewModel: AppViewModel
     
+    @State private var selectedTimeNeg = 30
+    @State private var selectedTimePos = 120
+
     @State var showSheet: Bool = false
     
     var body: some View {
@@ -39,19 +42,7 @@ struct BuildView7: View {
                         
                         Toggle("Ensure ADV is turned off and perform NEGATIVE pressure test for a minimum of 30 seconds.", isOn: $build.isNegativePressTestChecked)
                         
-                        Button {
-                            showSheet.toggle()
-                        } label: {
-                            Text("Timer")
-                                .font(.title)
-                                .frame(width: 300, height: 44)
-                                .background(.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(8)
-                        }
-                        .sheet(isPresented: $showSheet) {
-                            CountdownTimerView()
-                        }
+                       InlineTimer(selectedTime: $selectedTimeNeg)
                         
                     } header: {
                         Text("Step 23 - 24")
@@ -59,27 +50,24 @@ struct BuildView7: View {
                     
                     Section {
                         Toggle("Ensure counterlung exhaust valve is closed and perform POSITIVE pressure test for a minimum of 2 minutes.", isOn: $build.isPostivePressTestChecked)
-                        Button {
-                            showSheet.toggle()
-                        } label: {
-                            Text("Timer")
-                                .font(.title)
-                                .frame(width: 300, height: 44)
-                                .background(.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(8)
-                        }
-                        .sheet(isPresented: $showSheet) {
-                            CountdownTimerView()
-                        }
+                        
+                        InlineTimer(selectedTime: $selectedTimePos)
+//                        Button {
+//                            showSheet.toggle()
+//                        } label: {
+//                            Text("Timer")
+//                                .font(.title)
+//                                .frame(width: 300, height: 44)
+//                                .background(.blue)
+//                                .foregroundColor(.white)
+//                                .cornerRadius(8)
+//                        }
+//                        .sheet(isPresented: $showSheet) {
+//                            CountdownTimerView()
+//                        }
                     } header: {
                         Text("Step 25")
                     }
-
-                    
-                    
-
-
                 }
             }
             NavigationLink("Next") {

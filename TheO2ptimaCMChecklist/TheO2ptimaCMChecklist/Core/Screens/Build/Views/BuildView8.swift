@@ -13,6 +13,7 @@ struct BuildView8: View {
     
     //@ObservedObject var appViewModel: AppViewModel
     
+    @State private var selectedTimePreBreathe = 300
     @State var showSheet: Bool = false
     
     var body: some View {
@@ -45,19 +46,21 @@ struct BuildView8: View {
                         Text("open counterlung exhaust valve")
                         Text("change setpoint to 0.5")
                         Text("perform a 5 minute prebreathe confirming correct solenoid operation")
-                        Button {
-                            showSheet.toggle()
-                        } label: {
-                            Text("Timer")
-                                .font(.title)
-                                .frame(width: 300, height: 44)
-                                .background(.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(8)
-                        }
-                        .sheet(isPresented: $showSheet) {
-                            CountdownTimerView()
-                        }
+                        
+                        InlineTimer(selectedTime: $selectedTimePreBreathe)
+//                        Button {
+//                            showSheet.toggle()
+//                        } label: {
+//                            Text("Timer")
+//                                .font(.title)
+//                                .frame(width: 300, height: 44)
+//                                .background(.blue)
+//                                .foregroundColor(.white)
+//                                .cornerRadius(8)
+//                        }
+//                        .sheet(isPresented: $showSheet) {
+//                            CountdownTimerView()
+//                        }
     
                     } header: {
                         Text("Step 28")
