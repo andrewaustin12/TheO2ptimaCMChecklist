@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import UserNotifications
 
 struct InlineTimer: View {
     @Binding var selectedTime: Int
@@ -15,6 +15,9 @@ struct InlineTimer: View {
     @State private var isTimerRunning: Bool = false
     @State private var showAlert: Bool = false
 
+    // Create an instance of NotificationHandler
+    @State private var notificationHandler = NotificationHandler()
+    
     var formattedTime: String {
         let minutes = timeRemaining / 60
         let seconds = timeRemaining % 60
@@ -33,7 +36,7 @@ struct InlineTimer: View {
             HStack {
                 Picker("Select Time", selection: $selectedTime) {
                     Text("30 seconds").tag(30)
-                    Text("2 minute").tag(120)
+                    Text("2 minutes").tag(120)
                     Text("5 minutes").tag(300)
                 }
                 .pickerStyle(SegmentedPickerStyle())
@@ -70,20 +73,23 @@ struct InlineTimer: View {
     }
 
     private func startTimer() {
-        guard !isTimerRunning else {
-            stopTimer()
-            return
-        }
-
-        timeRemaining = selectedTime
+        guard !isTimerRunning else { return }
         isTimerRunning = true
+        timeRemaining = selectedTime
+        
+        // Schedule the notification for when the timer is supposed to end.
+        notificationHandler.sendNotification(
+            date: Date().addingTimeInterval(Double(selectedTime)),
+            type: "date", // Since we're scheduling based on a future date
+            title: "Timer Complete",
+            body: "Your countdown timer has finished."
+        )
 
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            if timeRemaining > 0 {
-                timeRemaining -= 1
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            if self.timeRemaining > 0 {
+                self.timeRemaining -= 1
             } else {
-                stopTimer()
-                showAlert = true
+                self.stopTimer()
             }
         }
     }
@@ -92,6 +98,10 @@ struct InlineTimer: View {
         timer?.invalidate()
         timer = nil
         isTimerRunning = false
+        // Now, notification is handled by startTimer, so this just handles UI.
+        if timeRemaining == 0 {
+            showAlert = true
+        }
     }
 }
 
