@@ -3,6 +3,11 @@ import SwiftUI
 struct SettingsView: View {
     @AppStorage("isBarPsiChecked") private var isBarPsiChecked = false
     
+    // Fetch app version from Info.plist
+    var appVersion: String {
+        (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "Unknown"
+    }
+    
     var body: some View {
         VStack{
             List {
@@ -14,6 +19,8 @@ struct SettingsView: View {
                         .frame(width: 320, height: 300)
                     
                 }
+                
+                /// DEFAULTS SECTION
                 Section("Defaults") {
                     Label {
                         Toggle("BAR or PSI", isOn: $isBarPsiChecked)
@@ -23,7 +30,7 @@ struct SettingsView: View {
                         
                     }
                 }
-                
+                /// DEVELOPER SECTION
                 Section("Developer") {
                     HStack{
                         Label("Made by:", systemImage: "person")
@@ -35,9 +42,9 @@ struct SettingsView: View {
                         Label("Support future development", systemImage: "mug.fill")
                     }
                 }
-                
+                /// SUPPORT SECTION
                 Section("Support") {
-                    Label("Version 1.2", systemImage: "apps.iphone")
+                    Label("Version \(appVersion)", systemImage: "apps.iphone")
                     
                     Label {
                         HStack {
