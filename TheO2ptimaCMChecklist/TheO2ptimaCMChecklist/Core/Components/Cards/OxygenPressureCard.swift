@@ -10,7 +10,8 @@ import SwiftUI
 struct OxygenPressureCard: View {
     @State var build: Build
     @Environment(\.modelContext) var modelContext
-    
+    @AppStorage("isBarPsiChecked") private var isBarPsiChecked = false // Assuming false is for BAR, true for PSI
+
     //@ObservedObject var appViewModel: AppViewModel
 
     
@@ -20,7 +21,7 @@ struct OxygenPressureCard: View {
                 HStack {
                     Text("Pressure:")
                     Spacer()
-                    TextField("Bar", text: $build.oxygenPressure)
+                    TextField(isBarPsiChecked ? "PSI" : "BAR", text: $build.oxygenPressure)
                         .keyboardType(.numbersAndPunctuation)
                         .submitLabel(.done)
                         .frame(width: 80)

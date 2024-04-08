@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @AppStorage("isBarPsiChecked") private var isBarPsiChecked = false
+    
     var body: some View {
         VStack{
             List {
@@ -11,6 +13,15 @@ struct SettingsView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10.0))
                         .frame(width: 320, height: 300)
                     
+                }
+                Section("Defaults") {
+                    Label {
+                        Toggle("BAR or PSI", isOn: $isBarPsiChecked)
+                            .toggleStyle(SwitchToggleStyle(tint: .blue))
+                    } icon: {
+                        Image(systemName: "gauge.with.dots.needle.33percent")
+                        
+                    }
                 }
                 
                 Section("Developer") {

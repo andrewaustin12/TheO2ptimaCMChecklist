@@ -28,7 +28,9 @@ struct BuildView8: View {
                     
                     Section {
                         Toggle("Turn on oxygen and record oxygen cylinder pressure:", isOn: $build.isOxygenTurnedOnRecordedChecked)
+                        
                         OxygenPressureCard(build: build)
+                        
                     } header: {
                         Text("Step 26")
                     }

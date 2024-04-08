@@ -13,6 +13,7 @@ import SwiftUI
 struct BuildLogDetailView: View {
     var build: Build  // Expects a single Build object
     var buildNumber: Int
+    @AppStorage("isBarPsiChecked") private var isBarPsiChecked = false
     
     var body: some View {
         NavigationStack {
@@ -184,7 +185,7 @@ struct BuildLogDetailView: View {
                         VStack {
                             Text("O2:")
                                 .font(.headline)
-                            Text("\(build.oxygenPressure) Bar")
+                            Text("\(build.oxygenPressure) \(isBarPsiChecked ? "PSI" : "BAR")")
                                 .font(.headline)
                                 .foregroundColor(.gray)
                         }

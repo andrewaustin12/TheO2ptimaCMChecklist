@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct GasCard: View {
-    
+    @AppStorage("isBarPsiChecked") private var isBarPsiChecked = false // Assuming false is for BAR, true for PSI
+        
     var title: String
     var startingPP02: String
     var startingPressure: String
@@ -28,7 +29,7 @@ struct GasCard: View {
                 VStack{
                     Text("Pressure:")
                         .font(.headline)
-                    Text("\(startingPressure) Bar")
+                    Text("\(startingPressure) \(isBarPsiChecked ? "PSI" : "BAR")")
                         
                 }
             }

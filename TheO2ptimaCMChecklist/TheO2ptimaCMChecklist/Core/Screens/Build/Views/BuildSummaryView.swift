@@ -10,7 +10,8 @@ import SwiftUI
 struct BuildSummaryView: View {
     @State var build: Build
     @Environment(\.modelContext) var modelContext
-    //@ObservedObject var appViewModel: AppViewModel
+    //@ObservedObject var appViewModel: AppViewModelf
+    @AppStorage("isBarPsiChecked") private var isBarPsiChecked = false // Assuming false is for BAR, true for PSI
 
     @State private var navigateToMain = false
     
@@ -28,7 +29,7 @@ struct BuildSummaryView: View {
                         
                         List {
                             Text("You have \(build.isUsedSorbMin) min left on your scrubber.")
-                            Text("You have \(build.oxygenPressure) Bar of O2 for the dive.")
+                            Text("You have \(build.oxygenPressure) \(isBarPsiChecked ? "PSI" : "BAR") of O2 for the dive.")
                                 
                                 SummaryGasCard(title: "Gas Content",
                                                o2Content: build.o2Content,
