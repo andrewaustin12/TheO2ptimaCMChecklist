@@ -22,7 +22,7 @@ struct MainTabView: View {
                     Image(systemName: "list.dash")
                     Text("Gear")
                 }.tag(1)
-            BuildLogsView()
+            BuildHistoryView()
                 .onAppear{
                     selectedIndex = 2
                 }

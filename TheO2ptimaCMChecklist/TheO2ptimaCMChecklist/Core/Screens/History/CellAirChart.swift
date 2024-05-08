@@ -1,36 +1,23 @@
-//
-//  CellAccuracyBarChart.swift
-//  theSidewinderChecklist
-//
-//  Created by andrew austin on 1/12/24.
-//
-
 import SwiftUI
 import Charts
-import SwiftData // Assuming this is needed for your overall project, not directly in this snippet
 
 struct CellAirChartView: View {
     var builds: [Build]
 
     var body: some View {
         VStack {
-            Text("Cell mV on Air")
-                .font(.headline)
-                .padding(.top)
+            
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 30) {
-                    // Chart for Cell 1 Values on Air
-                    cellChart(for: builds.map { $0.cellOneAir }, cellNumber: 1)
-
-                    // Chart for Cell 2 Values on Air
-                    cellChart(for: builds.map { $0.cellTwoAir }, cellNumber: 2)
-
-                    // Chart for Cell 3 Values on Air
-                    cellChart(for: builds.map { $0.cellThreeAir }, cellNumber: 3)
+                    ForEach(1...3, id: \.self) { cellNumber in
+                        cellChart(for: values(for: cellNumber), cellNumber: cellNumber)
+                            .frame(width: UIScreen.main.bounds.width - 40) // Subtracting padding from both sides
+                            .padding(.horizontal, 20) // 20 points padding on each side
+                    }
                 }
             }
-            .padding(.horizontal) // Padding for the entire horizontal ScrollView
+
         }
     }
 
@@ -39,6 +26,8 @@ struct CellAirChartView: View {
             Text("Cell \(cellNumber)")
                 .font(.headline)
                 .padding(.vertical)
+                .fontWeight(.medium)
+                .foregroundColor(.secondary)
 
             Chart {
                 ForEach(Array(values.enumerated()), id: \.offset) { index, value in
@@ -49,7 +38,7 @@ struct CellAirChartView: View {
                     .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.blue, .clear]), startPoint: .top, endPoint: .bottom))
                 }
             }
-            .frame(height: 150) // Adjusted frame size for better readability
+            .frame(height: 150)  // Increased height for better chart visibility
             .chartYScale(domain: .automatic)
             .chartXAxis {
                 // Hiding the x-axis labels
@@ -63,16 +52,12 @@ struct CellAirChartView: View {
         .padding(.bottom, 5)
     }
 
+    private func values(for cellNumber: Int) -> [Double] {
+        switch cellNumber {
+        case 1: return builds.map { $0.cellOneAir }
+        case 2: return builds.map { $0.cellTwoAir }
+        case 3: return builds.map { $0.cellThreeAir }
+        default: return []
+        }
+    }
 }
-
-
-
-
-
-
-
-
-//#Preview {
-//    CellAccuracyBarChartView(builds: [Build].first)
-//        .modelContainer(for: Build.self)
-//}
