@@ -2,6 +2,8 @@ import SwiftUI
 
 struct SettingsView: View {
     @AppStorage("isBarPsiChecked") private var isBarPsiChecked = false
+    @EnvironmentObject var settings: SettingsManager
+    @State private var showSetpointPicker = false
     
     // Fetch app version from Info.plist
     var appVersion: String {
@@ -29,6 +31,56 @@ struct SettingsView: View {
                         Image(systemName: "gauge.with.dots.needle.33percent")
                         
                     }
+                    
+                    Label {
+                        HStack {
+                            Text("Low Setpoint")
+                            Spacer()
+                            Text(String(format: "%.1f", settings.lowSetpoint))
+                                .foregroundColor(.secondary)
+                        }
+                    } icon: {
+                        Image(systemName: "gauge.with.dots.needle.bottom.50percent.badge.minus")
+                    }
+                    .onTapGesture {
+                        showSetpointPicker = true
+                    }
+                    .sheet(isPresented: $showSetpointPicker) {
+                        NavigationView {
+                            VStack(spacing: 20) {
+                                Text("Select Low Setpoint")
+                                    .font(.headline)
+                                    .padding(.top)
+                                
+                                Picker("Low Setpoint", selection: $settings.lowSetpoint) {
+                                    ForEach([0.4, 0.5, 0.6, 0.7, 0.8, 0.9], id: \.self) { value in
+                                        Text(String(format: "%.1f", value))
+                                            .tag(value)
+                                    }
+                                }
+                                .pickerStyle(.wheel)
+                                
+                                Text("The low setpoint determines when your rebreather will add oxygen")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal)
+                                
+                                Spacer()
+                            }
+                            .navigationBarTitleDisplayMode(.inline)
+                            .navigationBarItems(
+                                leading: Button("Cancel") {
+                                    showSetpointPicker = false
+                                },
+                                trailing: Button("Done") {
+                                    showSetpointPicker = false
+                                }
+                                .fontWeight(.bold)
+                            )
+                        }
+                        .presentationDetents([.height(300)])
+                    }
                 }
                 /// DEVELOPER SECTION
                 Section("Developer") {
@@ -48,7 +100,7 @@ struct SettingsView: View {
                     
                     Label {
                         HStack {
-                            Text("Feature Request")
+                            Text("Feature & Feedback")
                             Spacer() // This will push the text and icon to opposite ends
                             Image(systemName: "link") // The link icon
                                 .foregroundColor(.blue)
@@ -58,21 +110,21 @@ struct SettingsView: View {
                             
                     }
                     .onTapGesture {
-                        openMail()
+                        openIdeasandbugz()
                     }
                     Label {
                         HStack {
-                            Text("Give Feedback")
+                            Text("Report a bug")
                             Spacer() // This will push the text and icon to opposite ends
                             Image(systemName: "link") // The link icon
                                 .foregroundColor(.blue)
                         }
                     } icon: {
-                        Image(systemName: "envelope")
+                        Image(systemName: "ant")
                             
                     }
                     .onTapGesture {
-                        openMail()
+                        openIdeasandbugz()
                     }
                     
                     Label {
@@ -116,6 +168,7 @@ struct SettingsView: View {
 #Preview {
     NavigationStack {
         SettingsView()
+            .environmentObject(SettingsManager())
     }
 }
 
@@ -171,3 +224,7 @@ func openWebsite() {
     UIApplication.shared.open(websiteURL)
 }
 
+func openIdeasandbugz() {
+    let websiteURL = URL(string: "https://www.ideasandbugz.com/feedback/o2ptima-cm-checklist")!
+    UIApplication.shared.open(websiteURL)
+}

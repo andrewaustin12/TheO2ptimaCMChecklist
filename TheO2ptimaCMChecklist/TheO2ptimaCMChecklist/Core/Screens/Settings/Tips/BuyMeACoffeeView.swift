@@ -1,142 +1,134 @@
-
 import SwiftUI
-import SceneKit
 import StoreKit
 
 struct BuyMeACoffeeView: View {
-    /// For 3D model
-    @State var scene: SCNScene? = .init(named: "Coffee_Shop_Cup.scn")
+    @EnvironmentObject private var store: TipStore
+    @Environment(\.colorScheme) var colorScheme
     
-    /// Fore revenueCat
-    @State var myProduct: Product?
-    @State var showPaywall = false
-    
-    /// For Tips views
     @State private var showTips = false
     @State private var showThanks = false
     
-    @EnvironmentObject private var store: TipStore
+    private let accentColor = Color.blue
+    private let backgroundColor = Color(uiColor: .systemBackground)
     
     var body: some View {
         NavigationStack {
-            ZStack {
-
-
-                VStack(spacing: 20) {
-
-
-                    // Coffee cup image
-                    SceneView(scene: $scene)
-                        .frame(height: 350)
-                    
-                    Text("Buy me a coffee")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-
-                    VStack(alignment: .leading) {
-                        // Description text with custom icon color
-                        HStack {
-                            Image(systemName: "lightbulb.fill")
-                                .foregroundColor(.unitPrimary) // Replace with your custom icon color
-                            Text("Fueling Ongoing Progress")
-                                .foregroundColor(.primary) // Text color
-                                .font(.title3)
-                        }
-                        .multilineTextAlignment(.center)
-                        .padding(2)
-
-                        // Description text with custom icon color
-                        HStack {
-                            Image(systemName: "arrow.right.circle.fill")
-                                .foregroundColor(.unitPrimary) // Replace with your custom icon color
-                            Text("Empowering Future Endeavors")
-                                .foregroundColor(.primary) // Text color
-                                .font(.title3)
-                        }
-                        .multilineTextAlignment(.center)
-                        .padding(2)
-
-                        // Description text with custom icon color
-                        HStack {
-                            Image(systemName: "mug.fill")
-                                .foregroundColor(.unitPrimary) // Replace with your custom icon color
-                            Text("Supporting My Caffeine Fix")
-                                .foregroundColor(.primary) // Text color
-                                .font(.title3)
-                        }
-                        .multilineTextAlignment(.center)
-                        .padding(2)
-                    }
-                    .padding(.bottom)
-
-                    // Purchase button
-                    Button(action: {
-                        showTips.toggle()
-                    }) {
-                        Text("Support")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .frame(width: 200, height: 50)
-                            .background(Color(Color.unitPrimary)) // Replace with your custom color
-                            .foregroundColor(Color.white)
-                            .cornerRadius(10)
-                            .shadow(radius: 10)
-                    }
-                    
-                }
-                .padding()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .overlay(
-                    Group {
-                        if showTips {
-                            Color.black.opacity(0.8)
-                                .ignoresSafeArea()
-                                .transition(.opacity)
-                                .onTapGesture {
-                                    showTips.toggle()
-                                }
-                            TipsView {
-                                showTips.toggle()
-                            }
-                            .environmentObject(store)
-                            .transition(.move(edge: .bottom).combined(with: .opacity))
-                        }
-                    }
-                )
-                .overlay(alignment: .bottom, content: {
-                    
-                    if showThanks {
-                        ThanksView {
-                            showThanks = false
-                        }
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
-                    }
-                })
-                .animation(.spring(), value: showTips)
-                .animation(.spring(), value: showThanks)
-                .onChange(of: store.action) { action in
-                    
-                    if action == .successful {
+            ScrollView {
+                VStack(spacing: 22) {
+                    // Header Section
+                    VStack(spacing: 12) {
+                        Image(systemName: "cup.and.saucer.fill")
+                            .font(.system(size: 60))
+                            .foregroundStyle(.blue)
+                            .symbolEffect(.bounce, value: showTips)
                         
-                        showTips = false
+                        Text("Support Future Innovation")
+                            .font(.system(size: 34, weight: .bold, design: .rounded))
+                            .multilineTextAlignment(.center)
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            
-                            showThanks = true
-                            store.reset()
-                        }
+                        Text("Help shape the next generation of features")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
                     }
-                }
-                .alert(isPresented: $store.hasError, error: store.error) {
+                    .padding(.top, 32)
                     
+                    // Features List
+                    VStack(spacing: 16) {
+                        featureRow(
+                            icon: "sparkles",
+                            text: "Power New Features",
+                            description: "Support the development of innovative capabilities",
+                            color: .purple
+                        )
+                        
+                        featureRow(
+                            icon: "arrow.clockwise",
+                            text: "Regular Updates",
+                            description: "Enable continuous improvements and refinements",
+                            color: .blue
+                        )
+                        
+                        featureRow(
+                            icon: "heart.fill",
+                            text: "Show Your Support",
+                            description: "Join the community of app supporters",
+                            color: .red
+                        )
+                    }
+                    .padding(.horizontal)
+                    
+                    // Support Button
+                    Button(action: { showTips.toggle() }) {
+                        Text("Make a Difference")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 56)
+                            .background(accentColor)
+                            .foregroundColor(.white)
+                            .cornerRadius(16)
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.top, 8)
+                    
+                    Text("Your support directly enables new features and improvements")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 24)
+                }
+                .padding(.bottom, 24)
+            }
+            .background(backgroundColor)
+            .sheet(isPresented: $showTips) {
+                TipsView { showTips.toggle() }
+                    .environmentObject(store)
+            }
+            .sheet(isPresented: $showThanks) {
+                ThanksView { showThanks = false }
+            }
+            .onChange(of: store.action) { action in
+                if action == .successful {
+                    showTips = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        showThanks = true
+                        store.reset()
+                    }
                 }
             }
+            .alert(isPresented: $store.hasError, error: store.error) { }
         }
     }
-}
-#Preview {
-    NavigationStack {
-        BuyMeACoffeeView()
-            .environmentObject(TipStore())
+    
+    private func featureRow(icon: String, text: String, description: String, color: Color) -> some View {
+        HStack(spacing: 16) {
+            Image(systemName: icon)
+                .font(.title2)
+                .foregroundColor(color)
+                .frame(width: 40, height: 40)
+                .background(color.opacity(0.2))
+                .clipShape(Circle())
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(text)
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                
+                Text(description)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+        }
+        .padding()
+        .background(Color(uiColor: .secondarySystemBackground))
+        .cornerRadius(16)
     }
+}
+
+#Preview {
+    BuyMeACoffeeView()
+        .environmentObject(TipStore())
 }

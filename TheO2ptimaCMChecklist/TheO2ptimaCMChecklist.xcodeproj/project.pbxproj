@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -133,6 +133,10 @@
 		3FE8E6CF2BC3EB7C00598233 /* BuildHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildHistoryView.swift; sourceTree = "<group>"; };
 		3FE8E6D12BC3EB8B00598233 /* BuildHistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildHistoryData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3F1AE4C12D3F9DA4003A1B74 /* Managers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Managers; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3FA139CA2ACDFDB70059932A /* Frameworks */ = {
@@ -385,6 +389,7 @@
 		3FAE0AA62B6BB6F000FB0110 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3F1AE4C12D3F9DA4003A1B74 /* Managers */,
 				3FAE0AA72B6BB6F500FB0110 /* Handlers */,
 			);
 			path = Utils;
@@ -420,6 +425,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3F1AE4C12D3F9DA4003A1B74 /* Managers */,
 			);
 			name = TheO2ptimaCMChecklist;
 			productName = TheO2ptimaCMChecklist;
@@ -680,7 +688,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andy.TheO2ptimaCMChecklist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -711,7 +719,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andy.TheO2ptimaCMChecklist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

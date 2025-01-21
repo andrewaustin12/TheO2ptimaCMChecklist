@@ -15,12 +15,14 @@ struct TheO2ptimaCMChecklistApp: App {
     let container: ModelContainer
     
     @StateObject private var store = TipStore()
+    @StateObject private var settings = SettingsManager()
     
     var body: some Scene {
         WindowGroup {
             WarningView()
                 .modelContainer(container)
                 .environmentObject(store)
+                .environmentObject(settings)
         }
     }
     init() {

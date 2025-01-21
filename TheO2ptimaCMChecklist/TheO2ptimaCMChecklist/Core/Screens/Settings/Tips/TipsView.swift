@@ -1,55 +1,79 @@
-//
-//  TipsView.swift
-//  theSidewinderChecklist
-//
-//  Created by andrew austin on 1/15/24.
-//
-
 import SwiftUI
 
 struct TipsView: View {
     @EnvironmentObject private var store: TipStore
-        
+    @Environment(\.colorScheme) var colorScheme
+    
     var didTapClose: () -> ()
     
+    private let backgroundColor = Color(uiColor: .secondarySystemBackground)
+    
     var body: some View {
-        VStack(spacing: 8) {
+        ZStack {
+            backgroundColor
             
-            HStack {
-                Spacer()
-                Button(action: didTapClose) {
-                    Image(systemName: "xmark")
-                        .symbolVariant(.circle.fill)
-                        .font(.system(.largeTitle, design: .rounded).bold())
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.gray, .gray.opacity(0.2))
+            VStack(spacing: 24) {
+                // Header
+                VStack(spacing: 16) {
+                    // Close Button
+                    HStack {
+                        Spacer()
+                        Button(action: didTapClose) {
+                            Image(systemName: "xmark.circle.fill")
+                                .font(.system(size: 32, weight: .medium))
+                                .foregroundStyle(.secondary)
+                                .padding(.trailing, 8)
+                        }
+                    }
+                    
+                    // Icon
+                    if #available(iOS 18.0, *) {
+                        Image(systemName: "star.circle.fill")
+                            .font(.system(size: 60))
+                            .foregroundStyle(.blue)
+                            .symbolEffect(.bounce)
+                    } else {
+                        Image(systemName: "star.circle.fill")
+                            .font(.system(size: 60))
+                            .foregroundStyle(.blue)
+                            
+                    }
+                    
+                    // Title and Description
+                    VStack(spacing: 8) {
+                        Text("Support This App")
+                            .font(.system(.title2, design: .rounded).bold())
+                            .multilineTextAlignment(.center)
+                        
+                        Text("Your contribution helps create new features and improvements, making this app even better for everyone.")
+                            .font(.system(.body, design: .rounded))
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                    }
                 }
+                
+                // Tip Options
+                VStack(spacing: 12) {
+                    ForEach(store.items) { item in
+                        TipsItemView(item: item)
+                            .transition(.scale.combined(with: .opacity))
+                    }
+                }
+                .padding(.horizontal)
+                
+                // Footer
+                Text("Thank you for supporting independent development")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
             }
-            
-            Text("Enjoying the app so far? 👀")
-                .font(.system(.title2, design: .rounded).bold())
-                .multilineTextAlignment(.center)
-            
-            Text("Support the development of our amazing app by leaving a tip today. Your contribution helps us enhance your experience and deliver even more exciting features.")
-                .font(.system(.body, design: .rounded))
-                .multilineTextAlignment(.center)
-                .padding(.bottom, 16)
-            
-            ForEach(store.items) { item in
-                TipsItemView(item: item)
-            }
+            .padding(.vertical, 24)
         }
-        .padding(16)
-        .background(Color("card-background"), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-        .padding(8)
-        .overlay(alignment: .top) {
-            Image("app-logo")
-                .resizable()
-                .frame(width: 50, height: 50)
-                .padding(6)
-                .background(Color.black, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                .offset(y: -25)
-        }
+        .ignoresSafeArea()
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .shadow(color: .black.opacity(0.1), radius: 20, y: 10)
     }
 }
 

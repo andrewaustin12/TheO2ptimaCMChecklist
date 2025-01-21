@@ -10,11 +10,13 @@ import SwiftUI
 struct BuildView8: View {
     @State var build: Build
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var settings: SettingsManager
     
     //@ObservedObject var appViewModel: AppViewModel
     
     @State private var selectedTimePreBreathe = 300
     @State var showSheet: Bool = false
+
     
     var body: some View {
         NavigationStack{
@@ -46,7 +48,7 @@ struct BuildView8: View {
                         Toggle("Preform PreBreathe", isOn: $build.isPrebreatheDoneChecked)
                         Text("Turn oxygen cylinder back on")
                         Text("open counterlung exhaust valve")
-                        Text("change setpoint to 0.5")
+                        Text("change setpoint to \(String(format: "%.1f", settings.lowSetpoint))")
                         Text("perform a 5 minute prebreathe confirming correct solenoid operation")
                         
                         InlineTimer(selectedTime: $selectedTimePreBreathe)
@@ -94,5 +96,6 @@ struct BuildView8: View {
     NavigationStack {
         BuildView8(build: Build())
             .modelContainer(for: Build.self)
+            .environmentObject(SettingsManager())
     }
 }

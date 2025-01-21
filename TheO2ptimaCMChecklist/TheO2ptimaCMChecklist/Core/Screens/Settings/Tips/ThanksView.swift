@@ -12,30 +12,40 @@ struct ThanksView: View {
     var didTapClose: () -> ()
     
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 16) {
+            Spacer()
+                .frame(height: 40)
             
-            Text("Thank You 💕")
-                .font(.system(.title2, design: .rounded).bold())
+            Image(systemName: "heart.fill")
+                .font(.system(size: 60))
+                .foregroundColor(.pink)
+            
+            Text("Thank You")
+                .font(.system(.title, design: .rounded).bold())
                 .multilineTextAlignment(.center)
             
-            Text("Thank you for your kind support! Your contribution helps us improve the app and provide a better experience. We truly appreciate it!")
+            Text("Your support means a lot to us")
                 .font(.system(.body, design: .rounded))
                 .multilineTextAlignment(.center)
-                .padding(.bottom, 16)
+                .foregroundColor(.secondary)
+            
+            Spacer()
+                .frame(height: 40)
             
             Button(action: didTapClose) {
-                Text("Close")
-                    .font(.system(.title3, design: .rounded).bold())
-                    .tint(.white)
-                    .frame(height: 55)
+                Text("Continue")
+                    .font(.system(.body, design: .rounded).bold())
+                    .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
-                    .background(.unitPrimary, in: RoundedRectangle(cornerRadius: 10,
-                                                            style: .continuous))
+                    .padding(.vertical, 16)
+                    .background(Color.pink)
+                    .cornerRadius(16)
             }
         }
-        .padding(16)
-        .background(Color("card-background"), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-        .padding(.horizontal, 8)
+        .padding(24)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(uiColor: .systemBackground))
+        .ignoresSafeArea()
     }
 }
 
